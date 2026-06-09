@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MerqueTiendas</title>
+<style>
+body{
+font-family:Arial,sans-serif;
+background:#f4f4f4;
+margin:0;
+padding:20px;
+}
+h1{
+text-align:center;
+color:#0a7d32;
+}
+input{
+width:100%;
+padding:12px;
+margin-bottom:20px;
+font-size:16px;
+}
+.negocio{
+background:white;
+padding:15px;
+margin-bottom:10px;
+border-radius:10px;
+box-shadow:0 2px 5px rgba(0,0,0,0.1);
+}
+button{
+background:#25D366;
+color:white;
+border:none;
+padding:10px;
+border-radius:5px;
+cursor:pointer;
+}
+</style>
+</head>
+<body>
+
+<h1>MERQUETIENDAS</h1>
+
+<input type="text" id="buscar" placeholder="Buscar negocio...">
+
+<div id="lista"></div>
+
+<script>
+
+const negocios = [
+{
+nombre:"Electricista Carlos",
+categoria:"Servicios Técnicos",
+telefono:"3124567890",
+descripcion:"Instalaciones y reparaciones eléctricas"
+},
+{
+nombre:"Tienda La Esperanza",
+categoria:"Tienda",
+telefono:"3001111111",
+descripcion:"Víveres y abarrotes"
+}
+];
+
+function mostrar(datos){
+let html='';
+datos.forEach(n=>{
+html+=`
+<div class="negocio">
+<h3>${n.nombre}</h3>
+<p>${n.categoria}</p>
+<p>${n.descripcion}</p>
+<a href="https://wa.me/57${n.telefono}">
+<button>WhatsApp</button>
+</a>
+</div>
+`;
+});
+document.getElementById('lista').innerHTML=html;
+}
+
+mostrar(negocios);
+
+document.getElementById('buscar')
+.addEventListener('keyup',e=>{
+const texto=e.target.value.toLowerCase();
+const filtrados=negocios.filter(n=>
+n.nombre.toLowerCase().includes(texto) ||
+n.categoria.toLowerCase().includes(texto)
+);
+mostrar(filtrados);
+});
+
+</script>
+
+</body>
+</html>
