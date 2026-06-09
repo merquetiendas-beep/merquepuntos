@@ -1,98 +1,277 @@
+```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MerqueTiendas</title>
+<title>MERQUETIENDAS</title>
+
 <style>
-body{
-font-family:Arial,sans-serif;
-background:#f4f4f4;
+
+*{
 margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+background:#f5f7fa;
+}
+
+header{
+background:#0a7d32;
+color:white;
+padding:25px;
+text-align:center;
+}
+
+header h1{
+font-size:32px;
+}
+
+header p{
+margin-top:8px;
+font-size:14px;
+}
+
+.merquepuntos{
+margin-top:10px;
+font-weight:bold;
+color:#ffd700;
+}
+
+.container{
+max-width:1100px;
+margin:auto;
 padding:20px;
 }
-h1{
-text-align:center;
-color:#0a7d32;
-}
-input{
+
+#buscar{
 width:100%;
-padding:12px;
-margin-bottom:20px;
+padding:14px;
+border-radius:10px;
+border:1px solid #ccc;
 font-size:16px;
+margin-bottom:20px;
 }
-.negocio{
+
+.categorias{
+display:flex;
+flex-wrap:wrap;
+gap:10px;
+margin-bottom:20px;
+}
+
+.categoria{
+background:white;
+padding:10px 15px;
+border-radius:20px;
+cursor:pointer;
+border:1px solid #ddd;
+}
+
+.categoria:hover{
+background:#0a7d32;
+color:white;
+}
+
+.estadisticas{
 background:white;
 padding:15px;
-margin-bottom:10px;
 border-radius:10px;
-box-shadow:0 2px 5px rgba(0,0,0,0.1);
+margin-bottom:20px;
+font-weight:bold;
 }
-button{
+
+.negocios{
+display:grid;
+grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+gap:15px;
+}
+
+.negocio{
+background:white;
+border-radius:12px;
+padding:15px;
+box-shadow:0 2px 8px rgba(0,0,0,.1);
+}
+
+.negocio h3{
+color:#0a7d32;
+margin-bottom:8px;
+}
+
+.negocio p{
+margin:5px 0;
+}
+
+.btn{
+display:inline-block;
+margin-top:10px;
 background:#25D366;
 color:white;
-border:none;
-padding:10px;
-border-radius:5px;
-cursor:pointer;
+padding:10px 15px;
+border-radius:8px;
+text-decoration:none;
+font-weight:bold;
 }
+
+footer{
+margin-top:30px;
+padding:20px;
+text-align:center;
+background:#0a7d32;
+color:white;
+}
+
 </style>
 </head>
+
 <body>
+
+<header>
 
 <h1>MERQUETIENDAS</h1>
 
-<input type="text" id="buscar" placeholder="Buscar negocio...">
+<div class="merquepuntos">
+└── MERQUEPUNTOS
+</div>
 
-<div id="lista"></div>
+<p>
+Compra local, gana puntos y apoya tu región
+</p>
+
+</header>
+
+<div class="container">
+
+<input
+type="text"
+id="buscar"
+placeholder="🔍 Buscar negocio o categoría..."
+>
+
+<div class="categorias">
+
+<div class="categoria">🛒 Tiendas</div>
+<div class="categoria">💊 Droguerías</div>
+<div class="categoria">🥩 Carnicerías</div>
+<div class="categoria">⚡ Electricistas</div>
+<div class="categoria">🔧 Talleres</div>
+<div class="categoria">🌱 Productores</div>
+<div class="categoria">🚕 Transporte</div>
+
+</div>
+
+<div class="estadisticas">
+Negocios registrados: <span id="contador"></span>
+</div>
+
+<div class="negocios" id="lista"></div>
+
+</div>
+
+<footer>
+
+MERQUETIENDAS © 2026
+
+</footer>
 
 <script>
 
 const negocios = [
+
 {
 nombre:"Electricista Carlos",
-categoria:"Servicios Técnicos",
+categoria:"Electricistas",
 telefono:"3124567890",
 descripcion:"Instalaciones y reparaciones eléctricas"
 },
+
 {
 nombre:"Tienda La Esperanza",
-categoria:"Tienda",
+categoria:"Tiendas",
 telefono:"3001111111",
 descripcion:"Víveres y abarrotes"
+},
+
+{
+nombre:"Carnicería Central",
+categoria:"Carnicerías",
+telefono:"3002222222",
+descripcion:"Carne de res y cerdo"
+},
+
+{
+nombre:"Taller Moto Express",
+categoria:"Talleres",
+telefono:"3003333333",
+descripcion:"Mantenimiento de motocicletas"
 }
+
 ];
 
+document.getElementById("contador").innerText =
+negocios.length;
+
 function mostrar(datos){
+
 let html='';
+
 datos.forEach(n=>{
-html+=`
+
+html += `
+
 <div class="negocio">
+
 <h3>${n.nombre}</h3>
-<p>${n.categoria}</p>
+
+<p><strong>Categoría:</strong> ${n.categoria}</p>
+
 <p>${n.descripcion}</p>
-<a href="https://wa.me/57${n.telefono}">
-<button>WhatsApp</button>
+
+<a
+class="btn"
+href="https://wa.me/57${n.telefono}"
+target="_blank"
+>
+WhatsApp
 </a>
+
 </div>
+
 `;
+
 });
-document.getElementById('lista').innerHTML=html;
+
+document.getElementById('lista').innerHTML = html;
+
 }
 
 mostrar(negocios);
 
 document.getElementById('buscar')
 .addEventListener('keyup',e=>{
-const texto=e.target.value.toLowerCase();
-const filtrados=negocios.filter(n=>
+
+const texto =
+e.target.value.toLowerCase();
+
+const filtrados =
+negocios.filter(n=>
+
 n.nombre.toLowerCase().includes(texto) ||
+
 n.categoria.toLowerCase().includes(texto)
+
 );
+
 mostrar(filtrados);
+
 });
 
 </script>
 
 </body>
 </html>
+```
