@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MerquePuntos</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Inter:wght@400;500&display=swap');
+
+  :root {
+    --verde: #1a6b3c;
+    --verde-claro: #e8f5ee;
+    --verde-medio: #2d9a5a;
+    --dorado: #c98b1a;
+    --dorado-claro: #fff8e6;
+    --dorado-medio: #f0b429;
+    --tierra: #7a4a1e;
+    --fondo: #f7f4ef;
+    --blanco: #ffffff;
+    --texto: #1c1c1c;
+    --texto-suave: #6b6b6b;
+    --borde: #e0dbd2;
+    --rojo: #c0392b;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--fondo);
+    color: var(--texto);
+    min-height: 100vh;
+  }
+
+  h1, h2, h3 { font-family: 'Sora', sans-serif; }
+
+  /* ── PANTALLAS ── */
+  .screen { display: none; min-height: 100vh; }
+  .screen.active { display: flex; flex-direction: column; }
+
+  /* ── LOGIN ── */
+  #login {
+    background: var(--verde);
+    align-items: center;
+    justify-content: center;
+    padding: 32px 20px;
+  }
+
+  .login-card {
+    background: var(--blanco);
+    border-radius: 20px;
+    padding: 36px 28px;
+    width: 100%;
+    max-width: 380px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+  }
+
+  .logo-area {
+    text-align: center;
+    margin-bottom: 28px;
+  }
+
+  .logo-icon {
+    width: 64px; height: 64px;
+    background: var(--verde-claro);
+    border-radius: 16px;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 12px;
+    font-size: 32px;
+  }
+
+  .logo-area h1 { font-size: 24px; color: var(--verde); letter-spacing: -0.5px; }
+  .logo-area p { font-size: 13px; color: var(--texto-suave); margin-top: 4px; }
+
+  .field { margin-bottom: 16px; }
+  .field label { display: block; font-size: 13px; font-weight: 500; color: var(--texto-suave); margin-bottom: 6px; }
+  .field input {
+    width: 100%; padding: 12px 16px;
+    border: 1.5px solid var(--borde);
+    border-radius: 10px; font-size: 15px;
+    font-family: 'Inter', sans-serif;
+    outline: none; transition: border-color .2s;
+    background: var(--fondo);
+  }
+  .field input:focus { border-color: var(--verde-medio); background: var(--blanco); }
+
+  .btn-primary {
+    width: 100%; padding: 13px;
+    background: var(--verde);
+    color: white; border: none;
+    border-radius: 10px; font-size: 15px;
+    font-family: 'Sora', sans-serif; font-weight: 600;
+    cursor: pointer; transition: background .2s;
+    margin-top: 4px;
+  }
+  .btn-primary:hover { background: var(--verde-medio); }
+
+  .admin-link {
+    text-align: center; margin-top: 16px;
+    font-size: 13px; color: var(--texto-suave);
+  }
+  .admin-link a { color: var(--verde); text-decoration: none; font-weight: 500; }
+
+  .error-msg {
+    background: #fdecea; color: var(--rojo);
+    border-radius: 8px; padding: 10px 14px;
+    font-size: 13px; margin-bottom: 12px;
+    display: none;
+  }
+
+  /* ── HEADER USUARIO ── */
+  .app-header {
+    background: var(--verde);
+    padding: 16px 20px;
+    display: flex; align-items: center; justify-content: space-between;
+    position: sticky; top: 0; z-index: 10;
+  }
+  .app-header h2 { font-size: 17px; color: white; }
+  .header-right { display: flex; align-items: center; gap: 12px; }
+  .btn-logout {
+    background: rgba(255,255,255,0.15);
+    color: white; border: none; padding: 6px 12px;
+    border-radius: 8px; font-size: 12px; cursor: pointer;
+    font-family: 'Inter', sans-serif;
+  }
+
+  /* ── TARJETA PUNTOS ── */
+  .puntos-card {
+    background: linear-gradient(135deg, var(--dorado) 0%, #e6a817 100%);
+    margin: 16px;
+    border-radius: 18px;
+    padding: 24px 20px;
+    color: white;
+    position: relative;
+    overflow: hidden;
+  }
+  .puntos-card::after {
+    content: '★';
+    position: absolute; right: 20px; top: 50%;
+    transform: translateY(-50%);
+    font-size: 64px; opacity: 0.15;
+  }
+  .puntos-label { font-size: 12px; opacity: 0.85; text-transform: uppercase; letter-spacing: 1px; }
+  .puntos-numero { font-family: 'Sora', sans-serif; font-size: 52px; font-weight: 700; line-height: 1; margin: 4px 0; }
+  .puntos-sub { font-size: 12px; opacity: 0.8; }
+  .puntos-usuario { margin-top: 14px; font-size: 13px; opacity: 0.9; }
+
+  /* ── ACCIONES RÁPIDAS ── */
+  .acciones {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 12px; padding: 0 16px 16px;
+  }
+  .accion-btn {
+    background: var(--blanco);
+    border: 1.5px solid var(--borde);
+    border-radius: 14px; padding: 16px 14px;
+    text-align: center; cursor: pointer;
+    transition: all .2s; text-decoration: none;
+    display: block;
+  }
+  .accion-btn:hover { border-color: var(--verde-medio); background: var(--verde-claro); }
+  .accion-icon { font-size: 26px; margin-bottom: 6px; }
+  .accion-label { font-size: 13px; font-weight: 500; color: var(--texto); }
+  .accion-sub { font-size: 11px; color: var(--texto-suave); margin-top: 2px; }
+
+  /* ── SECCIÓN ── */
+  .seccion { padding: 0 16px 16px; }
+  .seccion h3 { font-size: 15px; color: var(--texto); margin-bottom: 12px; }
+
+  /* ── HISTORIAL ── */
+  .historial-item {
+    background: var(--blanco);
+    border-radius: 12px; padding: 14px 16px;
+    margin-bottom: 8px;
+    display: flex; align-items: center; justify-content: space-between;
+    border: 1px solid var(--borde);
+  }
+  .hist-left { display: flex; align-items: center; gap: 12px; }
+  .hist-icon {
+    width: 40px; height: 40px;
+    background: var(--verde-claro);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+  }
+  .hist-negocio { font-size: 14px; font-weight: 500; }
+  .hist-fecha { font-size: 12px; color: var(--texto-suave); margin-top: 2px; }
+  .hist-puntos { font-family: 'Sora', sans-serif; font-size: 16px; font-weight: 700; color: var(--verde); }
+  .hist-valor { font-size: 11px; color: var(--texto-suave); text-align: right; margin-top: 2px; }
+
+  /* ── FORMULARIO REPORTE ── */
+  #reportar {
+    background: var(--fondo);
+  }
+  .form-area {
+    padding: 20px 16px;
+    flex: 1;
+  }
+  .form-card {
+    background: var(--blanco);
+    border-radius: 16px; padding: 20px;
+    border: 1px solid var(--borde);
+    margin-bottom: 16px;
+  }
+  .form-card h3 { font-size: 15px; margin-bottom: 16px; color: var(--texto); }
+
+  .select-negocio {
+    width: 100%; padding: 12px 16px;
+    border: 1.5px solid var(--borde);
+    border-radius: 10px; font-size: 14px;
+    font-family: 'Inter', sans-serif;
+    background: var(--fondo); outline: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%236b6b6b' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    cursor: pointer;
+  }
+  .select-negocio:focus { border-color: var(--verde-medio); }
+
+  .valor-input-wrap { position: relative; margin-top: 12px; }
+  .valor-prefix {
+    position: absolute; left: 14px; top: 50%;
+    transform: translateY(-50%);
+    font-size: 15px; color: var(--texto-suave); font-weight: 500;
+  }
+  .valor-input-wrap input {
+    padding-left: 36px !important;
+  }
+
+  .puntos-preview {
+    background: var(--dorado-claro);
+    border: 1.5px solid var(--dorado-medio);
+    border-radius: 10px; padding: 14px 16px;
+    display: flex; align-items: center; justify-content: space-between;
+    margin-top: 16px;
+  }
+  .preview-label { font-size: 13px; color: var(--tierra); }
+  .preview-num { font-family: 'Sora', sans-serif; font-size: 22px; font-weight: 700; color: var(--dorado); }
+
+  .aviso {
+    background: var(--verde-claro);
+    border-radius: 10px; padding: 12px 14px;
+    font-size: 12px; color: var(--verde);
+    line-height: 1.5;
+  }
+
+  /* ── ADMIN ── */
+  #admin { background: var(--fondo); }
+
+  .admin-header {
+    background: var(--tierra);
+    padding: 16px 20px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .admin-header h2 { font-size: 17px; color: white; }
+
+  .stats-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 12px; padding: 16px;
+  }
+  .stat-card {
+    background: var(--blanco);
+    border-radius: 14px; padding: 16px;
+    border: 1px solid var(--borde);
+    text-align: center;
+  }
+  .stat-num { font-family: 'Sora', sans-serif; font-size: 28px; font-weight: 700; color: var(--verde); }
+  .stat-label { font-size: 12px; color: var(--texto-suave); margin-top: 4px; }
+
+  .tabla-reportes {
+    margin: 0 16px 16px;
+    background: var(--blanco);
+    border-radius: 14px; overflow: hidden;
+    border: 1px solid var(--borde);
+  }
+  .tabla-header {
+    background: var(--tierra);
+    display: grid; grid-template-columns: 1fr 1fr 1fr 80px;
+    padding: 10px 14px;
+    font-size: 12px; color: white; font-weight: 500;
+    gap: 8px;
+  }
+  .tabla-fila {
+    display: grid; grid-template-columns: 1fr 1fr 1fr 80px;
+    padding: 11px 14px; font-size: 13px;
+    border-bottom: 1px solid var(--borde);
+    align-items: center; gap: 8px;
+  }
+  .tabla-fila:last-child { border-bottom: none; }
+  .tabla-fila:nth-child(even) { background: var(--fondo); }
+  .badge-pts {
+    background: var(--dorado-claro);
+    color: var(--tierra);
+    border-radius: 6px; padding: 3px 8px;
+    font-size: 12px; font-weight: 600;
+    text-align: center; display: inline-block;
+  }
+
+  .btn-admin-sec {
+    background: var(--tierra); color: white;
+    border: none; padding: 12px 20px;
+    border-radius: 10px; font-size: 14px;
+    font-family: 'Sora', sans-serif; font-weight: 600;
+    cursor: pointer; margin: 0 16px 8px; width: calc(100% - 32px);
+    transition: background .2s;
+  }
+  .btn-admin-sec:hover { background: #9b5e24; }
+
+  /* ── NAV INFERIOR ── */
+  .bottom-nav {
+    background: var(--blanco);
+    border-top: 1px solid var(--borde);
+    display: flex; position: sticky; bottom: 0;
+    padding: 8px 0 4px;
+  }
+  .nav-item {
+    flex: 1; display: flex; flex-direction: column;
+    align-items: center; gap: 3px; cursor: pointer;
+    padding: 4px 0; border: none; background: none;
+    font-family: 'Inter', sans-serif;
+  }
+  .nav-icon { font-size: 22px; }
+  .nav-label { font-size: 10px; color: var(--texto-suave); }
+  .nav-item.active .nav-label { color: var(--verde); font-weight: 600; }
+
+  /* ── MODAL CANJE ── */
+  .modal-overlay {
+    display: none; position: fixed; inset: 0;
+    background: rgba(0,0,0,0.5); z-index: 100;
+    align-items: flex-end; justify-content: center;
+  }
+  .modal-overlay.open { display: flex; }
+  .modal {
+    background: var(--blanco);
+    border-radius: 20px 20px 0 0;
+    padding: 28px 20px 40px;
+    width: 100%; max-width: 480px;
+  }
+  .modal h3 { font-size: 18px; margin-bottom: 6px; }
+  .modal p { font-size: 14px; color: var(--texto-suave); margin-bottom: 20px; line-height: 1.5; }
+  .canje-opcion {
+    background: var(--fondo);
+    border: 1.5px solid var(--borde);
+    border-radius: 12px; padding: 14px 16px;
+    margin-bottom: 10px; cursor: pointer;
+    display: flex; align-items: center; justify-content: space-between;
+    transition: border-color .2s;
+  }
+  .canje-opcion:hover { border-color: var(--verde-medio); }
+  .canje-nombre { font-size: 14px; font-weight: 500; }
+  .canje-costo { font-size: 13px; color: var(--dorado); font-weight: 600; }
+  .btn-cerrar {
+    width: 100%; padding: 13px;
+    border: 1.5px solid var(--borde);
+    border-radius: 10px; background: none;
+    font-size: 14px; cursor: pointer; margin-top: 8px;
+    font-family: 'Inter', sans-serif; color: var(--texto-suave);
+  }
+
+  .success-toast {
+    position: fixed; bottom: 80px; left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background: var(--verde); color: white;
+    padding: 12px 24px; border-radius: 100px;
+    font-size: 14px; font-weight: 500;
+    opacity: 0; transition: all .3s; z-index: 200;
+    white-space: nowrap;
+    pointer-events: none;
+  }
+  .success-toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div class="screen active" id="login">
+  <div class="login-card">
+    <div class="logo-area">
+      <div class="logo-icon">🛒</div>
+      <h1>MerquePuntos</h1>
+      <p>Directorio y programa de beneficios</p>
+    </div>
+    <div class="error-msg" id="error-msg">Código o contraseña incorrectos</div>
+    <div class="field">
+      <label>Tu código de afiliado</label>
+      <input type="text" id="inp-codigo" placeholder="Ej: JUAN01" autocomplete="off">
+    </div>
+    <div class="field">
+      <label>Contraseña</label>
+      <input type="password" id="inp-pass" placeholder="Tu clave personal">
+    </div>
+    <button class="btn-primary" onclick="login()">Entrar</button>
+    <div class="admin-link">
+      ¿Eres el administrador? <a href="#" onclick="loginAdmin()">Acceso admin</a>
+    </div>
+  </div>
+</div>
+
+<!-- USUARIO: INICIO -->
+<div class="screen" id="inicio">
+  <div class="app-header">
+    <h2>🌿 MerquePuntos</h2>
+    <div class="header-right">
+      <button class="btn-logout" onclick="logout()">Salir</button>
+    </div>
+  </div>
+
+  <div class="puntos-card">
+    <div class="puntos-label">Tus puntos acumulados</div>
+    <div class="puntos-numero" id="puntos-display">0</div>
+    <div class="puntos-sub">≈ <span id="valor-equiv">$0</span> COP en beneficios</div>
+    <div class="puntos-usuario" id="usuario-display">Bienvenido</div>
+  </div>
+
+  <div class="acciones">
+    <a class="accion-btn" onclick="irA('reportar')">
+      <div class="accion-icon">🧾</div>
+      <div class="accion-label">Reportar compra</div>
+      <div class="accion-sub">Gana puntos</div>
+    </a>
+    <a class="accion-btn" onclick="abrirCanje()">
+      <div class="accion-icon">🎁</div>
+      <div class="accion-label">Canjear puntos</div>
+      <div class="accion-sub">Ver premios</div>
+    </a>
+    <a class="accion-btn" onclick="irA('historial-screen')">
+      <div class="accion-icon">📋</div>
+      <div class="accion-label">Mi historial</div>
+      <div class="accion-sub">Compras registradas</div>
+    </a>
+    <a class="accion-btn" onclick="irA('directorio-screen')">
+      <div class="accion-icon">🏪</div>
+      <div class="accion-label">Directorio</div>
+      <div class="accion-sub">Negocios afiliados</div>
+    </a>
+  </div>
+
+  <div class="seccion">
+    <h3>Actividad reciente</h3>
+    <div id="actividad-reciente"></div>
+  </div>
+
+  <div class="bottom-nav">
+    <button class="nav-item active" onclick="irA('inicio')"><span class="nav-icon">🏠</span><span class="nav-label">Inicio</span></button>
+    <button class="nav-item" onclick="irA('reportar')"><span class="nav-icon">➕</span><span class="nav-label">Reportar</span></button>
+    <button class="nav-item" onclick="irA('directorio-screen')"><span class="nav-icon">🏪</span><span class="nav-label">Tiendas</span></button>
+    <button class="nav-item" onclick="irA('historial-screen')"><span class="nav-icon">📋</span><span class="nav-label">Historial</span></button>
+  </div>
+</div>
+
+<!-- USUARIO: REPORTAR COMPRA -->
+<div class="screen" id="reportar">
+  <div class="app-header">
+    <h2>🧾 Reportar compra</h2>
+    <button class="btn-logout" onclick="irA('inicio')">← Volver</button>
+  </div>
+  <div class="form-area">
+    <div class="form-card">
+      <h3>¿Dónde compraste?</h3>
+      <select class="select-negocio" id="sel-negocio" onchange="calcularPuntos()">
+        <option value="">— Elige el negocio —</option>
+        <option value="tienda_esperanza|🛒|10">Tienda La Esperanza</option>
+        <option value="carniceria_sol|🥩|12">Carnicería El Sol</option>
+        <option value="drogueria_san_jose|💊|8">Droguería San José</option>
+        <option value="cafeteria_marta|☕|15">Cafetería Doña Marta</option>
+        <option value="panaderia_pan|🍞|10">Panadería El Buen Pan</option>
+        <option value="ferreteria_obras|🔧|8">Ferretería Las Obras</option>
+        <option value="verduleria_campo|🥦|12">Verdulería El Campo</option>
+        <option value="restaurante_sabor|🍽️|10">Restaurante El Sabor</option>
+      </select>
+
+      <div class="valor-input-wrap field" style="margin-top:12px">
+        <div class="field">
+          <label>¿Cuánto gastaste?</label>
+          <div class="valor-input-wrap">
+            <span class="valor-prefix">$</span>
+            <input type="number" id="inp-valor" placeholder="Ej: 25000" min="0" class="field input" style="padding-left:36px; width:100%; padding:12px 16px 12px 36px; border:1.5px solid var(--borde); border-radius:10px; font-size:15px; outline:none; font-family:'Inter',sans-serif; background:var(--fondo);" oninput="calcularPuntos()">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="puntos-preview" id="pts-preview" style="display:none">
+      <div>
+        <div class="preview-label">Puntos que ganarás</div>
+        <div style="font-size:11px;color:var(--tierra);margin-top:2px" id="preview-sub"></div>
+      </div>
+      <div class="preview-num" id="preview-num">0 pts</div>
+    </div>
+
+    <div class="aviso" style="margin-bottom:16px">
+      📌 Solo reporta compras reales. El administrador puede verificar en cualquier momento. El abuso cancela tu membresía.
+    </div>
+
+    <button class="btn-primary" onclick="registrarCompra()" style="border-radius:12px">
+      ✅ Registrar compra y ganar puntos
+    </button>
+  </div>
+</div>
+
+<!-- USUARIO: HISTORIAL -->
+<div class="screen" id="historial-screen">
+  <div class="app-header">
+    <h2>📋 Mi historial</h2>
+    <button class="btn-logout" onclick="irA('inicio')">← Volver</button>
+  </div>
+  <div style="padding:16px">
+    <div id="lista-historial"></div>
+  </div>
+</div>
+
+<!-- USUARIO: DIRECTORIO -->
+<div class="screen" id="directorio-screen">
+  <div class="app-header">
+    <h2>🏪 Negocios afiliados</h2>
+    <button class="btn-logout" onclick="irA('inicio')">← Volver</button>
+  </div>
+  <div style="padding:16px">
+    <div id="lista-directorio"></div>
+  </div>
+</div>
+
+<!-- ADMIN -->
+<div class="screen" id="admin">
+  <div class="admin-header">
+    <h2>⚙️ Panel admin</h2>
+    <button class="btn-logout" onclick="logout()">Salir</button>
+  </div>
+  <div style="padding:16px 0">
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-num" id="admin-usuarios">3</div>
+        <div class="stat-label">Afiliados activos</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num" id="admin-reportes">0</div>
+        <div class="stat-label">Compras hoy</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num" id="admin-puntos-total">0</div>
+        <div class="stat-label">Puntos entregados</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num" id="admin-valor-total">$0</div>
+        <div class="stat-label">Ventas reportadas</div>
+      </div>
+    </div>
+
+    <div style="padding:0 16px 12px">
+      <h3 style="font-size:15px;margin-bottom:12px">Reportes recientes</h3>
+    </div>
+    <div class="tabla-reportes">
+      <div class="tabla-header">
+        <span>Usuario</span><span>Negocio</span><span>Valor</span><span>Puntos</span>
+      </div>
+      <div id="admin-tabla-body">
+        <div style="padding:20px;text-align:center;font-size:13px;color:var(--texto-suave)">No hay reportes aún</div>
+      </div>
+    </div>
+
+    <button class="btn-admin-sec" onclick="exportarCSV()">📥 Exportar reportes (CSV)</button>
+    <button class="btn-admin-sec" style="background:var(--verde)" onclick="alert('Función: desde aquí podrás agregar/editar afiliados')">➕ Gestionar afiliados</button>
+  </div>
+</div>
+
+<!-- MODAL CANJE -->
+<div class="modal-overlay" id="modal-canje">
+  <div class="modal">
+    <h3>🎁 Canjear puntos</h3>
+    <p>Elige tu beneficio. El administrador recibirá la solicitud y te contactará por WhatsApp.</p>
+    <div class="canje-opcion" onclick="canjear('Descuento 10% próxima compra', 50)">
+      <span class="canje-nombre">🏷️ 10% descuento próxima compra</span>
+      <span class="canje-costo">50 pts</span>
+    </div>
+    <div class="canje-opcion" onclick="canjear('Producto gratis hasta $5.000', 100)">
+      <span class="canje-nombre">🎀 Producto gratis hasta $5.000</span>
+      <span class="canje-costo">100 pts</span>
+    </div>
+    <div class="canje-opcion" onclick="canjear('Descuento $10.000 en compras', 200)">
+      <span class="canje-nombre">💵 $10.000 en descuento</span>
+      <span class="canje-costo">200 pts</span>
+    </div>
+    <div class="canje-opcion" onclick="canjear('Mes gratis de membresía', 500)">
+      <span class="canje-nombre">⭐ 1 mes gratis de membresía</span>
+      <span class="canje-costo">500 pts</span>
+    </div>
+    <button class="btn-cerrar" onclick="cerrarCanje()">Cerrar</button>
+  </div>
+</div>
+
+<div class="success-toast" id="toast"></div>
+
+<script>
+// ── DATOS ──
+const USUARIOS = {
+  'USR001': { pass: 'mp001', nombre: 'Ana María López', barrio: 'Centro', puntos: 0, historial: [] },
+  'USR002': { pass: 'mp002', nombre: 'Carlos Andrés Pérez', barrio: 'Las Flores', puntos: 0, historial: [] },
+  'USR003': { pass: 'mp003', nombre: 'María Fernanda García', barrio: 'El Prado', puntos: 0, historial: [] },
+  'USR004': { pass: 'mp004', nombre: 'José Luis Martínez', barrio: 'La Unión', puntos: 0, historial: [] },
+  'USR005': { pass: 'mp005', nombre: 'Luz Marina Rodríguez', barrio: 'San Pedro', puntos: 0, historial: [] },
+  'USR006': { pass: 'mp006', nombre: 'Hernán Darío Gómez', barrio: 'Centro', puntos: 0, historial: [] },
+  'USR007': { pass: 'mp007', nombre: 'Patricia Inés Torres', barrio: 'Las Flores', puntos: 0, historial: [] },
+  'USR008': { pass: 'mp008', nombre: 'Álvaro José Ramírez', barrio: 'El Nogal', puntos: 0, historial: [] },
+  'USR009': { pass: 'mp009', nombre: 'Carmen Lucía Díaz', barrio: 'La Alborada', puntos: 0, historial: [] },
+  'USR010': { pass: 'mp010', nombre: 'Fabio Augusto Moreno', barrio: 'Barrio Nuevo', puntos: 0, historial: [] },
+  'USR011': { pass: 'mp011', nombre: 'Gloria Esperanza Cruz', barrio: 'Centro', puntos: 0, historial: [] },
+  'USR012': { pass: 'mp012', nombre: 'Roberto Carlos Vargas', barrio: 'El Cedro', puntos: 0, historial: [] },
+  'USR013': { pass: 'mp013', nombre: 'Sandra Milena Herrera', barrio: 'La Montaña', puntos: 0, historial: [] },
+  'USR014': { pass: 'mp014', nombre: 'Gustavo Adolfo Ríos', barrio: 'San José', puntos: 0, historial: [] },
+  'USR015': { pass: 'mp015', nombre: 'Marta Cecilia Patiño', barrio: 'Las Flores', puntos: 0, historial: [] },
+  'USR016': { pass: 'mp016', nombre: 'Diego Alejandro Muñoz', barrio: 'Centro', puntos: 0, historial: [] },
+  'USR017': { pass: 'mp017', nombre: 'Rosario del Carmen Silva', barrio: 'La Pradera', puntos: 0, historial: [] },
+  'USR018': { pass: 'mp018', nombre: 'Jaime Ernesto Castro', barrio: 'El Roble', puntos: 0, historial: [] },
+  'USR019': { pass: 'mp019', nombre: 'Amparo Nelly Osorio', barrio: 'Barrio Nuevo', puntos: 0, historial: [] },
+  'USR020': { pass: 'mp020', nombre: 'Julio César Cardona', barrio: 'La Colina', puntos: 0, historial: [] },
+  'USR021': { pass: 'mp021', nombre: 'Beatriz Elena Salazar', barrio: 'Centro', puntos: 0, historial: [] },
+  'USR022': { pass: 'mp022', nombre: 'Mauricio Alonso Giraldo', barrio: 'San Pedro', puntos: 0, historial: [] },
+  'USR023': { pass: 'mp023', nombre: 'Esperanza de Jesús Vélez', barrio: 'El Prado', puntos: 0, historial: [] },
+  'USR024': { pass: 'mp024', nombre: 'Nelson Enrique Aristizábal', barrio: 'La Unión', puntos: 0, historial: [] },
+  'USR025': { pass: 'mp025', nombre: 'Consuelo Amparo Mejía', barrio: 'Las Flores', puntos: 0, historial: [] },
+  'USR026': { pass: 'mp026', nombre: 'Raúl Antonio Zapata', barrio: 'El Nogal', puntos: 0, historial: [] },
+  'USR027': { pass: 'mp027', nombre: 'Olga Lucía Montoya', barrio: 'Centro', puntos: 0, historial: [] },
+  'USR028': { pass: 'mp028', nombre: 'Édgar Iván Restrepo', barrio: 'La Alborada', puntos: 0, historial: [] },
+  'USR029': { pass: 'mp029', nombre: 'Nubia Estela Henao', barrio: 'Barrio Nuevo', puntos: 0, historial: [] },
+  'USR030': { pass: 'mp030', nombre: 'Armando de Jesús Ossa', barrio: 'San José', puntos: 0, historial: [] },
+  'USR031': { pass: 'mp031', nombre: 'Liliana Marcela Bedoya', barrio: 'Centro', puntos: 0, historial: [] },
+  'USR032': { pass: 'mp032', nombre: 'Iván Darío Londoño', barrio: 'El Cedro', puntos: 0, historial: [] },
+  'USR033': { pass: 'mp033', nombre: 'Teresa de Jesús Agudelo', barrio: 'La Montaña', puntos: 0, historial: [] },
+  'USR034': { pass: 'mp034', nombre: 'Wilson Albeiro Castaño', barrio: 'Las Flores', puntos: 0, historial: [] },
+  'USR035': { pass: 'mp035', nombre: 'Marleny Zapata Grajales', barrio: 'La Pradera', puntos: 0, historial: [] },
+  'USR036': { pass: 'mp036', nombre: 'Rodrigo Alonso Tobón', barrio: 'Centro', puntos: 0, historial: [] },
+  'USR037': { pass: 'mp037', nombre: 'Alba Nelly Cárdenas', barrio: 'San Pedro', puntos: 0, historial: [] },
+  'USR038': { pass: 'mp038', nombre: 'Óscar Eduardo Quintero', barrio: 'El Roble', puntos: 0, historial: [] },
+  'USR039': { pass: 'mp039', nombre: 'Gladys Amparo Echeverri', barrio: 'La Colina', puntos: 0, historial: [] },
+  'USR040': { pass: 'mp040', nombre: 'Henry Alejandro Palacio', barrio: 'Barrio Nuevo', puntos: 0, historial: [] },
+  'USR041': { pass: 'mp041', nombre: 'Yolanda Patricia Useche', barrio: 'Centro', puntos: 0, historial: [] },
+  'USR042': { pass: 'mp042', nombre: 'Bernardo Alonso Arango', barrio: 'La Unión', puntos: 0, historial: [] },
+  'USR043': { pass: 'mp043', nombre: 'Claudia Janeth Naranjo', barrio: 'El Prado', puntos: 0, historial: [] },
+  'USR044': { pass: 'mp044', nombre: 'Ernesto de Jesús Alzate', barrio: 'Las Flores', puntos: 0, historial: [] },
+  'USR045': { pass: 'mp045', nombre: 'Miriam Eugenia Gallego', barrio: 'El Nogal', puntos: 0, historial: [] },
+  'USR046': { pass: 'mp046', nombre: 'Camilo Andrés Acosta', barrio: 'Centro', puntos: 0, historial: [] },
+  'USR047': { pass: 'mp047', nombre: 'Nohora Stella Gutiérrez', barrio: 'La Alborada', puntos: 0, historial: [] },
+  'USR048': { pass: 'mp048', nombre: 'Libardo Antonio Cifuentes', barrio: 'San José', puntos: 0, historial: [] },
+  'USR049': { pass: 'mp049', nombre: 'Adriana María Correa', barrio: 'Barrio Nuevo', puntos: 0, historial: [] },
+  'USR050': { pass: 'mp050', nombre: 'Gonzalo Enrique Galeano', barrio: 'El Cedro', puntos: 0, historial: [] },
+  'USR051': { pass: 'mp051', nombre: 'Blanca Nelly Posada', barrio: 'Centro', puntos: 0, historial: [] },
+  'USR052': { pass: 'mp052', nombre: 'Félix Antonio Tamayo', barrio: 'La Montaña', puntos: 0, historial: [] },
+  'USR053': { pass: 'mp053', nombre: 'Luz Dary Sepúlveda', barrio: 'Las Flores', puntos: 0, historial: [] },
+  'USR054': { pass: 'mp054', nombre: 'Ancízar de Jesús Vélez', barrio: 'San Pedro', puntos: 0, historial: [] },
+  'USR055': { pass: 'mp055', nombre: 'Mónica Alejandra Arias', barrio: 'La Pradera', puntos: 0, historial: [] },
+  'USR056': { pass: 'mp056', nombre: 'Darío Alonso Rendón', barrio: 'Centro', puntos: 0, historial: [] },
+  'USR057': { pass: 'mp057', nombre: 'Flor Marina Orozco', barrio: 'El Roble', puntos: 0, historial: [] },
+  'USR058': { pass: 'mp058', nombre: 'Leonardo Fabio Ruiz', barrio: 'La Colina', puntos: 0, historial: [] },
+  'USR059': { pass: 'mp059', nombre: 'Rosalba de Jesús Ríos', barrio: 'Barrio Nuevo', puntos: 0, historial: [] },
+  'USR060': { pass: 'mp060', nombre: 'Héctor Emilio Soto', barrio: 'La Unión', puntos: 0, historial: [] },
+  'USR061': { pass: 'mp061', nombre: 'Nancy Judith Medina', barrio: 'Centro', puntos: 0, historial: [] },
+  'USR062': { pass: 'mp062', nombre: 'Porfirio Antonio Ocampo', barrio: 'El Prado', puntos: 0, historial: [] },
+  'USR063': { pass: 'mp063', nombre: 'Diana Carolina Estrada', barrio: 'Las Flores', puntos: 0, historial: [] },
+  'USR064': { pass: 'mp064', nombre: 'Elkin Darío Hurtado', barrio: 'El Nogal', puntos: 0, historial: [] },
+  'USR065': { pass: 'mp065', nombre: 'Cecilia de Jesús Vásquez', barrio: 'La Alborada', puntos: 0, historial: [] },
+  'USR066': { pass: 'mp066', nombre: 'Alirio Hernando Bermúdez', barrio: 'San José', puntos: 0, historial: [] },
+  'USR067': { pass: 'mp067', nombre: 'Marisol Amparo Cano', barrio: 'Barrio Nuevo', puntos: 0, historial: [] },
+  'USR068': { pass: 'mp068', nombre: 'Wilmar Alexánder Duque', barrio: 'El Cedro', puntos: 0, historial: [] },
+  'USR069': { pass: 'mp069', nombre: 'Fanny Lucero Parra', barrio: 'Centro', puntos: 0, historial: [] },
+  'USR070': { pass: 'mp070', nombre: 'Misael Antonio Loaiza', barrio: 'La Montaña', puntos: 0, historial: [] },
+  'USR071': { pass: 'mp071', nombre: 'Leidy Johana Ospina', barrio: 'Las Flores', puntos: 0, historial: [] },
+  'USR072': { pass: 'mp072', nombre: 'Eugenio de Jesús Marín', barrio: 'San Pedro', puntos: 0, historial: [] },
+  'USR073': { pass: 'mp073', nombre: 'Paola Andrea Jiménez', barrio: 'La Pradera', puntos: 0, historial: [] },
+  'USR074': { pass: 'mp074', nombre: 'Germán Alonso Arbeláez', barrio: 'Centro', puntos: 0, historial: [] },
+  'USR075': { pass: 'mp075', nombre: 'Deisy Lorena Calderón', barrio: 'El Roble', puntos: 0, historial: [] },
+  'USR076': { pass: 'mp076', nombre: 'Aristides de Jesús Franco', barrio: 'La Colina', puntos: 0, historial: [] },
+  'USR077': { pass: 'mp077', nombre: 'Bibiana Marcela Sánchez', barrio: 'Barrio Nuevo', puntos: 0, historial: [] },
+  'USR078': { pass: 'mp078', nombre: 'Albeiro Antonio Carvajal', barrio: 'La Unión', puntos: 0, historial: [] },
+  'USR079': { pass: 'mp079', nombre: 'Stella Nelly Tobón', barrio: 'El Prado', puntos: 0, historial: [] },
+  'USR080': { pass: 'mp080', nombre: 'Rubén Darío Monsalve', barrio: 'Las Flores', puntos: 0, historial: [] },
+  'USR081': { pass: 'mp081', nombre: 'Aura Nelly Peláez', barrio: 'Centro', puntos: 0, historial: [] },
+  'USR082': { pass: 'mp082', nombre: 'Néstor Alonso Garzón', barrio: 'El Nogal', puntos: 0, historial: [] },
+  'USR083': { pass: 'mp083', nombre: 'Marcela Patricia Lozano', barrio: 'La Alborada', puntos: 0, historial: [] },
+  'USR084': { pass: 'mp084', nombre: 'Octavio de Jesús Pulido', barrio: 'San José', puntos: 0, historial: [] },
+  'USR085': { pass: 'mp085', nombre: 'Giovanna Lucía Ramos', barrio: 'Barrio Nuevo', puntos: 0, historial: [] },
+  'USR086': { pass: 'mp086', nombre: 'Jairo Alonso Valderrama', barrio: 'El Cedro', puntos: 0, historial: [] },
+  'USR087': { pass: 'mp087', nombre: 'Piedad Eugenia Cortés', barrio: 'Centro', puntos: 0, historial: [] },
+  'USR088': { pass: 'mp088', nombre: 'Silvio Antonio Zuluaga', barrio: 'La Montaña', puntos: 0, historial: [] },
+  'USR089': { pass: 'mp089', nombre: 'Tatiana Marcela Urrego', barrio: 'Las Flores', puntos: 0, historial: [] },
+  'USR090': { pass: 'mp090', nombre: 'Horacio de Jesús Velásquez', barrio: 'San Pedro', puntos: 0, historial: [] },
+  'USR091': { pass: 'mp091', nombre: 'Viviana Alejandra Molina', barrio: 'La Pradera', puntos: 0, historial: [] },
+  'USR092': { pass: 'mp092', nombre: 'Eliseo Antonio Muñetón', barrio: 'Centro', puntos: 0, historial: [] },
+  'USR093': { pass: 'mp093', nombre: 'Lorena Marcela Botero', barrio: 'El Roble', puntos: 0, historial: [] },
+  'USR094': { pass: 'mp094', nombre: 'Fidel Antonio Chavarría', barrio: 'La Colina', puntos: 0, historial: [] },
+  'USR095': { pass: 'mp095', nombre: 'Alejandra María Quintero', barrio: 'Barrio Nuevo', puntos: 0, historial: [] },
+  'USR096': { pass: 'mp096', nombre: 'Tulio Enrique Serna', barrio: 'La Unión', puntos: 0, historial: [] },
+  'USR097': { pass: 'mp097', nombre: 'Natalia Andrea Ospina', barrio: 'El Prado', puntos: 0, historial: [] },
+  'USR098': { pass: 'mp098', nombre: 'Abelardo de Jesús Largo', barrio: 'Las Flores', puntos: 0, historial: [] },
+  'USR099': { pass: 'mp099', nombre: 'Yaneth Patricia Herrera', barrio: 'El Nogal', puntos: 0, historial: [] },
+  'USR100': { pass: 'mp100', nombre: 'Efraín Antonio Cardozo', barrio: 'Centro', puntos: 0, historial: [] },
+  'USR101': { pass: 'mp101', nombre: 'Lina María Aguilar', barrio: 'La Alborada', puntos: 0, historial: [] },
+  'USR102': { pass: 'mp102', nombre: 'Víctor Hugo Gallardo', barrio: 'San José', puntos: 0, historial: [] },
+  'USR103': { pass: 'mp103', nombre: 'Soraya Amparo Vélez', barrio: 'Barrio Nuevo', puntos: 0, historial: [] },
+  'USR104': { pass: 'mp104', nombre: 'Clemente Antonio Ríos', barrio: 'El Cedro', puntos: 0, historial: [] },
+  'USR105': { pass: 'mp105', nombre: 'Yudy Alejandra Mora', barrio: 'Centro', puntos: 0, historial: [] },
+  'USR106': { pass: 'mp106', nombre: 'Silviano de Jesús Pardo', barrio: 'La Montaña', puntos: 0, historial: [] },
+  'USR107': { pass: 'mp107', nombre: 'Karen Dayana Suárez', barrio: 'Las Flores', puntos: 0, historial: [] },
+  'USR108': { pass: 'mp108', nombre: 'Rodrigo Alonso Nieto', barrio: 'San Pedro', puntos: 0, historial: [] },
+  'USR109': { pass: 'mp109', nombre: 'Esperanza Nelly Vargas', barrio: 'La Pradera', puntos: 0, historial: [] },
+  'USR110': { pass: 'mp110', nombre: 'Hernando Antonio Mejía', barrio: 'Centro', puntos: 0, historial: [] },
+  'USR111': { pass: 'mp111', nombre: 'Zulma Patricia Arbeláez', barrio: 'El Roble', puntos: 0, historial: [] },
+  'USR112': { pass: 'mp112', nombre: 'Gildardo de Jesús Salcedo', barrio: 'La Colina', puntos: 0, historial: [] },
+  'USR113': { pass: 'mp113', nombre: 'Andrea Catalina Ríos', barrio: 'Barrio Nuevo', puntos: 0, historial: [] },
+  'USR114': { pass: 'mp114', nombre: 'Aníbal Antonio Zapata', barrio: 'La Unión', puntos: 0, historial: [] },
+  'USR115': { pass: 'mp115', nombre: 'Juliana Marcela Castro', barrio: 'El Prado', puntos: 0, historial: [] },
+  'USR116': { pass: 'mp116', nombre: 'Reinaldo de Jesús Osorio', barrio: 'Las Flores', puntos: 0, historial: [] },
+  'USR117': { pass: 'mp117', nombre: 'Claudia Nelly Rendón', barrio: 'El Nogal', puntos: 0, historial: [] },
+  'USR118': { pass: 'mp118', nombre: 'Elías Antonio Bedoya', barrio: 'La Alborada', puntos: 0, historial: [] },
+  'USR119': { pass: 'mp119', nombre: 'Manuela Alejandra Ossa', barrio: 'San José', puntos: 0, historial: [] },
+  'USR120': { pass: 'mp120', nombre: 'Otoniel de Jesús Carmona', barrio: 'Barrio Nuevo', puntos: 0, historial: [] },
+  'USR121': { pass: 'mp121', nombre: 'Dora Amparo Londoño', barrio: 'El Cedro', puntos: 0, historial: [] },
+  'USR122': { pass: 'mp122', nombre: 'Fredy Alonso Echeverri', barrio: 'Centro', puntos: 0, historial: [] },
+  'USR123': { pass: 'mp123', nombre: 'Mireya de Jesús Arango', barrio: 'La Montaña', puntos: 0, historial: [] },
+  'USR124': { pass: 'mp124', nombre: 'Saúl Antonio Giraldo', barrio: 'Las Flores', puntos: 0, historial: [] },
+  'USR125': { pass: 'mp125', nombre: 'Yenny Paola Hoyos', barrio: 'San Pedro', puntos: 0, historial: [] },
+  'USR126': { pass: 'mp126', nombre: 'Leonidas de Jesús Reyes', barrio: 'La Pradera', puntos: 0, historial: [] },
+  'USR127': { pass: 'mp127', nombre: 'Adriana Lucía Alzate', barrio: 'Centro', puntos: 0, historial: [] },
+  'USR128': { pass: 'mp128', nombre: 'Pompilio Antonio Gutiérrez', barrio: 'El Roble', puntos: 0, historial: [] },
+  'USR129': { pass: 'mp129', nombre: 'Johanna Marcela Cano', barrio: 'La Colina', puntos: 0, historial: [] },
+  'USR130': { pass: 'mp130', nombre: 'Celestino de Jesús Marín', barrio: 'Barrio Nuevo', puntos: 0, historial: [] },
+  'USR131': { pass: 'mp131', nombre: 'Oliva Amparo Cárdenas', barrio: 'La Unión', puntos: 0, historial: [] },
+  'USR132': { pass: 'mp132', nombre: 'Geovanny Alonso Rueda', barrio: 'El Prado', puntos: 0, historial: [] },
+  'USR133': { pass: 'mp133', nombre: 'Rocío de Jesús Flórez', barrio: 'Las Flores', puntos: 0, historial: [] },
+  'USR134': { pass: 'mp134', nombre: 'Aurelio Antonio Molina', barrio: 'El Nogal', puntos: 0, historial: [] },
+  'USR135': { pass: 'mp135', nombre: 'Stephanie Paola Morales', barrio: 'La Alborada', puntos: 0, historial: [] },
+  'USR136': { pass: 'mp136', nombre: 'Rigoberto de Jesús Palacio', barrio: 'San José', puntos: 0, historial: [] },
+  'USR137': { pass: 'mp137', nombre: 'Cindy Lorena Tobón', barrio: 'Barrio Nuevo', puntos: 0, historial: [] },
+  'USR138': { pass: 'mp138', nombre: 'Arcesio Antonio Henao', barrio: 'El Cedro', puntos: 0, historial: [] },
+  'USR139': { pass: 'mp139', nombre: 'Valentina Alejandra Ríos', barrio: 'Centro', puntos: 0, historial: [] },
+  'USR140': { pass: 'mp140', nombre: 'Timoteo de Jesús Soto', barrio: 'La Montaña', puntos: 0, historial: [] },
+  'USR141': { pass: 'mp141', nombre: 'Ingrid Paola Vargas', barrio: 'Las Flores', puntos: 0, historial: [] },
+  'USR142': { pass: 'mp142', nombre: 'Próspero Antonio Vásquez', barrio: 'San Pedro', puntos: 0, historial: [] },
+  'USR143': { pass: 'mp143', nombre: 'Liseth Dayana Medina', barrio: 'La Pradera', puntos: 0, historial: [] },
+  'USR144': { pass: 'mp144', nombre: 'Benjamín de Jesús Gómez', barrio: 'Centro', puntos: 0, historial: [] },
+  'USR145': { pass: 'mp145', nombre: 'Nataly Marcela Agudelo', barrio: 'El Roble', puntos: 0, historial: [] },
+  'USR146': { pass: 'mp146', nombre: 'Simón Antonio López', barrio: 'La Colina', puntos: 0, historial: [] },
+  'USR147': { pass: 'mp147', nombre: 'Keidy Alejandra Peña', barrio: 'Barrio Nuevo', puntos: 0, historial: [] },
+  'USR148': { pass: 'mp148', nombre: 'Epifanio de Jesús Duque', barrio: 'La Unión', puntos: 0, historial: [] },
+  'USR149': { pass: 'mp149', nombre: 'Wendy Paola Estrada', barrio: 'El Prado', puntos: 0, historial: [] },
+  'USR150': { pass: 'mp150', nombre: 'Cipriano Antonio Gallego', barrio: 'Las Flores', puntos: 0, historial: [] },
+  'USR151': { pass: 'mp151', nombre: 'Luisa Fernanda Acosta', barrio: 'El Nogal', puntos: 0, historial: [] },
+  'USR152': { pass: 'mp152', nombre: 'Baldomero de Jesús Correa', barrio: 'La Alborada', puntos: 0, historial: [] },
+  'USR153': { pass: 'mp153', nombre: 'Stefany Marcela Hurtado', barrio: 'San José', puntos: 0, historial: [] },
+  'USR154': { pass: 'mp154', nombre: 'Ciro Antonio Arbeláez', barrio: 'Barrio Nuevo', puntos: 0, historial: [] },
+  'USR155': { pass: 'mp155', nombre: 'Daniela Alejandra Parra', barrio: 'El Cedro', puntos: 0, historial: [] },
+  'USR156': { pass: 'mp156', nombre: 'Noé de Jesús Loaiza', barrio: 'Centro', puntos: 0, historial: [] },
+  'USR157': { pass: 'mp157', nombre: 'Yuliana Marcela Jiménez', barrio: 'La Montaña', puntos: 0, historial: [] },
+  'USR158': { pass: 'mp158', nombre: 'Eutimio Antonio Calderón', barrio: 'Las Flores', puntos: 0, historial: [] },
+  'USR159': { pass: 'mp159', nombre: 'Angie Paola Franco', barrio: 'San Pedro', puntos: 0, historial: [] },
+  'USR160': { pass: 'mp160', nombre: 'Isidoro de Jesús Monsalve', barrio: 'La Pradera', puntos: 0, historial: [] },
+  'USR161': { pass: 'mp161', nombre: 'Tatiana Alejandra Carvajal', barrio: 'Centro', puntos: 0, historial: [] },
+  'USR162': { pass: 'mp162', nombre: 'Absalón Antonio Tobón', barrio: 'El Roble', puntos: 0, historial: [] },
+  'USR163': { pass: 'mp163', nombre: 'Marcela Eugenia Herrera', barrio: 'La Colina', puntos: 0, historial: [] },
+  'USR164': { pass: 'mp164', nombre: 'Tranquilino de Jesús Ossa', barrio: 'Barrio Nuevo', puntos: 0, historial: [] },
+  'USR165': { pass: 'mp165', nombre: 'Yesenia Paola Velásquez', barrio: 'La Unión', puntos: 0, historial: [] },
+  'USR166': { pass: 'mp166', nombre: 'Esaú Antonio Muñetón', barrio: 'El Prado', puntos: 0, historial: [] },
+  'USR167': { pass: 'mp167', nombre: 'Carolina Marcela Botero', barrio: 'Las Flores', puntos: 0, historial: [] },
+  'USR168': { pass: 'mp168', nombre: 'Eliécer de Jesús Chavarría', barrio: 'El Nogal', puntos: 0, historial: [] },
+  'USR169': { pass: 'mp169', nombre: 'Mariana Alejandra Quintero', barrio: 'La Alborada', puntos: 0, historial: [] },
+  'USR170': { pass: 'mp170', nombre: 'Salomón Antonio Serna', barrio: 'San José', puntos: 0, historial: [] },
+  'USR171': { pass: 'mp171', nombre: 'Isabela Marcela Ospina', barrio: 'Barrio Nuevo', puntos: 0, historial: [] },
+  'USR172': { pass: 'mp172', nombre: 'Ezequiel de Jesús Largo', barrio: 'El Cedro', puntos: 0, historial: [] },
+  'USR173': { pass: 'mp173', nombre: 'Melissa Paola Herrera', barrio: 'Centro', puntos: 0, historial: [] },
+  'USR174': { pass: 'mp174', nombre: 'Cornelio Antonio Cardozo', barrio: 'La Montaña', puntos: 0, historial: [] },
+  'USR175': { pass: 'mp175', nombre: 'Sara Valentina Aguilar', barrio: 'Las Flores', puntos: 0, historial: [] },
+  'USR176': { pass: 'mp176', nombre: 'Evaristo de Jesús Gallardo', barrio: 'San Pedro', puntos: 0, historial: [] },
+  'USR177': { pass: 'mp177', nombre: 'Camila Andrea Vélez', barrio: 'La Pradera', puntos: 0, historial: [] },
+  'USR178': { pass: 'mp178', nombre: 'Apolinario Antonio Ríos', barrio: 'Centro', puntos: 0, historial: [] },
+  'USR179': { pass: 'mp179', nombre: 'Valeria Marcela Mora', barrio: 'El Roble', puntos: 0, historial: [] },
+  'USR180': { pass: 'mp180', nombre: 'Desiderio de Jesús Pardo', barrio: 'La Colina', puntos: 0, historial: [] },
+  'USR181': { pass: 'mp181', nombre: 'Samantha Alejandra Suárez', barrio: 'Barrio Nuevo', puntos: 0, historial: [] },
+  'USR182': { pass: 'mp182', nombre: 'Nemesio Antonio Nieto', barrio: 'La Unión', puntos: 0, historial: [] },
+  'USR183': { pass: 'mp183', nombre: 'Julieth Paola Arbeláez', barrio: 'El Prado', puntos: 0, historial: [] },
+  'USR184': { pass: 'mp184', nombre: 'Jacinto de Jesús Salcedo', barrio: 'Las Flores', puntos: 0, historial: [] },
+  'USR185': { pass: 'mp185', nombre: 'Alejandra Lucía Ríos', barrio: 'El Nogal', puntos: 0, historial: [] },
+  'USR186': { pass: 'mp186', nombre: 'Victorino Antonio Zapata', barrio: 'La Alborada', puntos: 0, historial: [] },
+  'USR187': { pass: 'mp187', nombre: 'Natalia Marcela Castro', barrio: 'San José', puntos: 0, historial: [] },
+  'USR188': { pass: 'mp188', nombre: 'Cándido de Jesús Osorio', barrio: 'Barrio Nuevo', puntos: 0, historial: [] },
+  'USR189': { pass: 'mp189', nombre: 'Laura Daniela Rendón', barrio: 'El Cedro', puntos: 0, historial: [] },
+  'USR190': { pass: 'mp190', nombre: 'Telesforo Antonio Bedoya', barrio: 'Centro', puntos: 0, historial: [] },
+  'USR191': { pass: 'mp191', nombre: 'Valeria Alejandra Ossa', barrio: 'La Montaña', puntos: 0, historial: [] },
+  'USR192': { pass: 'mp192', nombre: 'Fulgencio de Jesús Carmona', barrio: 'Las Flores', puntos: 0, historial: [] },
+  'USR193': { pass: 'mp193', nombre: 'Daniela Marcela Londoño', barrio: 'San Pedro', puntos: 0, historial: [] },
+  'USR194': { pass: 'mp194', nombre: 'Benigno Antonio Echeverri', barrio: 'La Pradera', puntos: 0, historial: [] },
+  'USR195': { pass: 'mp195', nombre: 'Isabella Paola Arango', barrio: 'Centro', puntos: 0, historial: [] },
+  'USR196': { pass: 'mp196', nombre: 'Heliodoro de Jesús Giraldo', barrio: 'El Roble', puntos: 0, historial: [] },
+  'USR197': { pass: 'mp197', nombre: 'Sofía Marcela Hoyos', barrio: 'La Colina', puntos: 0, historial: [] },
+  'USR198': { pass: 'mp198', nombre: 'Abundio Antonio Reyes', barrio: 'Barrio Nuevo', puntos: 0, historial: [] },
+  'USR199': { pass: 'mp199', nombre: 'Emma Alejandra Alzate', barrio: 'La Unión', puntos: 0, historial: [] },
+  'USR200': { pass: 'merque2024', nombre: 'ADMIN', barrio: 'Administrador', puntos: 0, historial: [] },
+};
+
+const DIRECTORIO = [
+  { id: 'tienda_esperanza', icono: '🛒', nombre: 'Tienda La Esperanza', desc: 'Abarrotes y víveres', tel: '311 234 5678', pts: '10 pts por $1.000' },
+  { id: 'carniceria_sol', icono: '🥩', nombre: 'Carnicería El Sol', desc: 'Carnes frescas y embutidos', tel: '312 345 6789', pts: '12 pts por $1.000' },
+  { id: 'drogueria_san_jose', icono: '💊', nombre: 'Droguería San José', desc: 'Medicamentos y salud', tel: '313 456 7890', pts: '8 pts por $1.000' },
+  { id: 'cafeteria_marta', icono: '☕', nombre: 'Cafetería Doña Marta', desc: 'Desayunos y almuerzos', tel: '314 567 8901', pts: '15 pts por $1.000' },
+  { id: 'panaderia_pan', icono: '🍞', nombre: 'Panadería El Buen Pan', desc: 'Pan fresco y repostería', tel: '315 678 9012', pts: '10 pts por $1.000' },
+  { id: 'ferreteria_obras', icono: '🔧', nombre: 'Ferretería Las Obras', desc: 'Materiales y herramientas', tel: '316 789 0123', pts: '8 pts por $1.000' },
+  { id: 'verduleria_campo', icono: '🥦', nombre: 'Verdulería El Campo', desc: 'Frutas y verduras frescas', tel: '317 890 1234', pts: '12 pts por $1.000' },
+  { id: 'restaurante_sabor', icono: '🍽️', nombre: 'Restaurante El Sabor', desc: 'Comida típica criolla', tel: '318 901 2345', pts: '10 pts por $1.000' }
+];
+
+let usuarioActual = null;
+let reportesHoy = [];
+let isAdmin = false;
+
+// ── NAVEGACIÓN ──
+function irA(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  const map = { inicio: 0, reportar: 1, 'directorio-screen': 2, 'historial-screen': 3 };
+  if (map[id] !== undefined) {
+    document.querySelectorAll('.nav-item')[map[id]]?.classList.add('active');
+  }
+  if (id === 'inicio') renderInicio();
+  if (id === 'historial-screen') renderHistorial();
+  if (id === 'directorio-screen') renderDirectorio();
+}
+
+// ── LOGIN ──
+function login() {
+  const codigo = document.getElementById('inp-codigo').value.trim().toUpperCase();
+  const pass = document.getElementById('inp-pass').value.trim();
+  const err = document.getElementById('error-msg');
+
+  if (USUARIOS[codigo] && USUARIOS[codigo].pass === pass) {
+    usuarioActual = codigo;
+    err.style.display = 'none';
+    irA('inicio');
+  } else {
+    err.style.display = 'block';
+  }
+}
+
+function loginAdmin() {
+  const codigo = document.getElementById('inp-codigo').value.trim();
+  const pass = document.getElementById('inp-pass').value.trim();
+  if (codigo === 'ADMIN' && pass === 'merque2024') {
+    isAdmin = true;
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    document.getElementById('admin').classList.add('active');
+    renderAdmin();
+  } else {
+    alert('Código admin: ADMIN\nContraseña: merque2024');
+  }
+}
+
+function logout() {
+  usuarioActual = null; isAdmin = false;
+  document.getElementById('inp-codigo').value = '';
+  document.getElementById('inp-pass').value = '';
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById('login').classList.add('active');
+}
+
+// ── RENDER INICIO ──
+function renderInicio() {
+  const u = USUARIOS[usuarioActual];
+  document.getElementById('puntos-display').textContent = u.puntos;
+  document.getElementById('valor-equiv').textContent = '$' + (u.puntos * 100).toLocaleString('es-CO');
+  document.getElementById('usuario-display').textContent = '👋 Hola, ' + u.nombre.split(' ')[0];
+
+  const el = document.getElementById('actividad-reciente');
+  if (u.historial.length === 0) {
+    el.innerHTML = '<div style="text-align:center;padding:20px;font-size:13px;color:var(--texto-suave)">Aún no tienes compras registradas.<br>¡Haz tu primera compra y gana puntos!</div>';
+    return;
+  }
+  el.innerHTML = u.historial.slice(0, 3).map(h => `
+    <div class="historial-item">
+      <div class="hist-left">
+        <div class="hist-icon">${h.icono}</div>
+        <div>
+          <div class="hist-negocio">${h.negocio}</div>
+          <div class="hist-fecha">${h.fecha}</div>
+        </div>
+      </div>
+      <div style="text-align:right">
+        <div class="hist-puntos">+${h.puntos} pts</div>
+        <div class="hist-valor">$${h.valor.toLocaleString('es-CO')}</div>
+      </div>
+    </div>`).join('');
+}
+
+// ── CALCULAR PUNTOS ──
+function calcularPuntos() {
+  const sel = document.getElementById('sel-negocio').value;
+  const valor = parseFloat(document.getElementById('inp-valor').value) || 0;
+  const preview = document.getElementById('pts-preview');
+
+  if (!sel || valor < 1000) { preview.style.display = 'none'; return; }
+
+  const tasa = parseInt(sel.split('|')[2]);
+  const pts = Math.floor((valor / 1000) * tasa);
+
+  preview.style.display = 'flex';
+  document.getElementById('preview-num').textContent = pts + ' pts';
+  document.getElementById('preview-sub').textContent = tasa + ' puntos por cada $1.000 gastados';
+}
+
+// ── REGISTRAR COMPRA ──
+function registrarCompra() {
+  const sel = document.getElementById('sel-negocio').value;
+  const valor = parseFloat(document.getElementById('inp-valor').value) || 0;
+
+  if (!sel) { alert('Elige el negocio donde compraste'); return; }
+  if (valor < 1000) { alert('Ingresa un valor válido (mínimo $1.000)'); return; }
+
+  const partes = sel.split('|');
+  const negocioId = partes[0];
+  const icono = partes[1];
+  const tasa = parseInt(partes[2]);
+  const pts = Math.floor((valor / 1000) * tasa);
+  const nombre = document.getElementById('sel-negocio').options[document.getElementById('sel-negocio').selectedIndex].text;
+
+  const u = USUARIOS[usuarioActual];
+  const ahora = new Date();
+  const hora = ahora.toLocaleTimeString('es-CO', { hour: '2-digit', minute: '2-digit' });
+
+  u.puntos += pts;
+  u.historial.unshift({ negocio: nombre, icono, valor, puntos: pts, fecha: 'Hoy ' + hora });
+
+  reportesHoy.push({ usuario: u.nombre, negocio: nombre, valor, puntos: pts, hora });
+
+  document.getElementById('sel-negocio').value = '';
+  document.getElementById('inp-valor').value = '';
+  document.getElementById('pts-preview').style.display = 'none';
+
+  mostrarToast('¡+' + pts + ' puntos ganados! 🎉');
+  setTimeout(() => irA('inicio'), 1200);
+}
+
+// ── HISTORIAL ──
+function renderHistorial() {
+  const u = USUARIOS[usuarioActual];
+  const el = document.getElementById('lista-historial');
+  if (u.historial.length === 0) {
+    el.innerHTML = '<div style="text-align:center;padding:40px;font-size:13px;color:var(--texto-suave)">No hay compras registradas aún</div>';
+    return;
+  }
+  el.innerHTML = u.historial.map(h => `
+    <div class="historial-item">
+      <div class="hist-left">
+        <div class="hist-icon">${h.icono}</div>
+        <div>
+          <div class="hist-negocio">${h.negocio}</div>
+          <div class="hist-fecha">${h.fecha}</div>
+        </div>
+      </div>
+      <div style="text-align:right">
+        <div class="hist-puntos">+${h.puntos} pts</div>
+        <div class="hist-valor">$${h.valor.toLocaleString('es-CO')}</div>
+      </div>
+    </div>`).join('');
+}
+
+// ── DIRECTORIO ──
+function renderDirectorio() {
+  document.getElementById('lista-directorio').innerHTML = DIRECTORIO.map(n => `
+    <div class="historial-item" style="flex-direction:column;align-items:flex-start;gap:6px">
+      <div style="display:flex;align-items:center;gap:10px;width:100%">
+        <div class="hist-icon" style="font-size:20px">${n.icono}</div>
+        <div style="flex:1">
+          <div class="hist-negocio">${n.nombre}</div>
+          <div class="hist-fecha">${n.desc}</div>
+        </div>
+        <div class="badge-pts">${n.pts}</div>
+      </div>
+      <div style="font-size:12px;color:var(--verde);padding-left:52px">📞 ${n.tel}</div>
+    </div>`).join('');
+}
+
+// ── ADMIN ──
+function renderAdmin() {
+  document.getElementById('admin-reportes').textContent = reportesHoy.length;
+  const totalPts = reportesHoy.reduce((s, r) => s + r.puntos, 0);
+  const totalVal = reportesHoy.reduce((s, r) => s + r.valor, 0);
+  document.getElementById('admin-puntos-total').textContent = totalPts;
+  document.getElementById('admin-valor-total').textContent = '$' + Math.floor(totalVal / 1000) + 'k';
+
+  if (reportesHoy.length === 0) return;
+  document.getElementById('admin-tabla-body').innerHTML = reportesHoy.map(r => `
+    <div class="tabla-fila">
+      <span style="font-size:12px">${r.usuario.split(' ')[0]}</span>
+      <span style="font-size:12px">${r.negocio.split(' ').slice(0, 2).join(' ')}</span>
+      <span style="font-size:12px">$${r.valor.toLocaleString('es-CO')}</span>
+      <span><div class="badge-pts">${r.puntos}</div></span>
+    </div>`).join('');
+}
+
+function exportarCSV() {
+  if (reportesHoy.length === 0) { alert('No hay reportes para exportar'); return; }
+  const csv = 'Usuario,Negocio,Valor,Puntos,Hora\n' +
+    reportesHoy.map(r => `${r.usuario},${r.negocio},${r.valor},${r.puntos},${r.hora}`).join('\n');
+  const a = document.createElement('a');
+  a.href = 'data:text/csv;charset=utf-8,' + encodeURIComponent(csv);
+  a.download = 'merquepuntos_reportes.csv';
+  a.click();
+  mostrarToast('CSV exportado ✓');
+}
+
+// ── CANJE ──
+function abrirCanje() { document.getElementById('modal-canje').classList.add('open'); }
+function cerrarCanje() { document.getElementById('modal-canje').classList.remove('open'); }
+
+function canjear(premio, costo) {
+  const u = USUARIOS[usuarioActual];
+  if (u.puntos < costo) {
+    alert('No tienes suficientes puntos. Necesitas ' + costo + ' pts, tienes ' + u.puntos + ' pts.');
+    return;
+  }
+  if (confirm('¿Canjear "' + premio + '" por ' + costo + ' puntos?')) {
+    u.puntos -= costo;
+    cerrarCanje();
+    mostrarToast('¡Canje solicitado! Te contactamos por WhatsApp 🎁');
+    renderInicio();
+  }
+}
+
+// ── TOAST ──
+function mostrarToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3000);
+}
+
+// Enter en login
+document.getElementById('inp-pass').addEventListener('keydown', e => {
+  if (e.key === 'Enter') login();
+});
+</script>
+</body>
+</html>
