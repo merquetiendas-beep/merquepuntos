@@ -1,0 +1,180 @@
+CATEGORIA,NOMBRE,DESCRIPCION,DIRECCION,REFERENCIA,TELEFONO,HORARIO,TARIFA,PUNTOS_POR_MIL
+Tiendas,Tienda La Esperanza,Víveres abarrotes y productos de la canasta familiar,Calle 3 # 5-10,Frente a la iglesia,3101234501,Lunes a Domingo 6am-9pm,Precio de lista,10
+Tiendas,Tienda El Progreso,Abarrotes granos y bebidas al por mayor y detal,Carrera 4 # 2-15,Al lado de la alcaldía,3101234502,Lunes a Domingo 6am-9pm,Precio de lista,10
+Tiendas,Tienda Doña Rosa,Surtido completo de víveres y productos de aseo,Calle 5 # 1-20,Esquina del parque,3101234503,Lunes a Sábado 6am-8pm,Precio de lista,10
+Tiendas,Tienda San José,Granos frescos lácteos y enlatados,Carrera 2 # 6-30,Barrio El Centro,3101234504,Lunes a Domingo 7am-9pm,Precio de lista,10
+Tiendas,Tienda La Bendición,Víveres bebidas y productos de primera necesidad,Calle 7 # 3-45,Cerca al colegio,3101234505,Lunes a Domingo 6am-9pm,Precio de lista,10
+Tiendas,Tienda El Buen Precio,Surtido variado con precios económicos,Carrera 6 # 4-12,Barrio Las Flores,3101234506,Lunes a Sábado 7am-8pm,Precio de lista,10
+Tiendas,Tienda La Cosecha,Productos agrícolas y víveres del campo,Calle 2 # 8-22,Entrada al pueblo,3101234507,Lunes a Domingo 6am-8pm,Precio de lista,10
+Tiendas,Tienda Mi Pueblo,Abarrotes y productos locales de calidad,Carrera 3 # 5-18,Frente al parque,3101234508,Lunes a Domingo 7am-9pm,Precio de lista,10
+Tiendas,Tienda La Economía,Precios bajos y buen surtido para el hogar,Calle 4 # 7-33,Barrio Nuevo,3101234509,Lunes a Sábado 6am-8pm,Precio de lista,10
+Tiendas,Tienda El Vecino,Víveres licores y productos de aseo,Carrera 5 # 3-27,Al lado de la cancha,3101234510,Lunes a Domingo 6am-10pm,Precio de lista,10
+Tiendas,Tienda La Frontera,Surtido completo y atención personalizada,Calle 8 # 2-14,Salida al municipio,3101234511,Lunes a Domingo 6am-9pm,Precio de lista,10
+Tiendas,Tienda El Manantial,Abarrotes frescos y productos naturales,Carrera 7 # 1-35,Barrio El Prado,3101234512,Lunes a Sábado 7am-8pm,Precio de lista,10
+Tiendas,Tienda La Palma,Víveres y productos básicos de la canasta,Calle 6 # 4-19,Frente a la escuela,3101234513,Lunes a Domingo 6am-9pm,Precio de lista,10
+Tiendas,Tienda Don Álvaro,Surtido variado licores y golosinas,Carrera 1 # 9-42,Barrio Abajo,3101234514,Lunes a Domingo 7am-10pm,Precio de lista,10
+Tiendas,Tienda El Camino,Abarrotes y productos para el campo,Calle 9 # 3-16,Via principal,3101234515,Lunes a Sábado 6am-7pm,Precio de lista,10
+Tiendas,Tienda La Unión,Víveres y granos al por mayor y detal,Carrera 8 # 2-28,Barrio La Unión,3101234516,Lunes a Domingo 6am-9pm,Precio de lista,10
+Tiendas,Tienda El Roble,Productos de primera necesidad y aseo,Calle 1 # 6-37,Esquina norte,3101234517,Lunes a Sábado 7am-8pm,Precio de lista,10
+Tiendas,Tienda La Montaña,Abarrotes frescos y bebidas frías,Carrera 9 # 5-11,Subida al barrio alto,3101234518,Lunes a Domingo 6am-9pm,Precio de lista,10
+Tiendas,Tienda San Pedro,Víveres enlatados y productos de panadería,Calle 10 # 4-23,Barrio San Pedro,3101234519,Lunes a Domingo 6am-9pm,Precio de lista,10
+Tiendas,Tienda El Triunfo,Surtido completo con delivery local,Carrera 10 # 3-44,Centro del pueblo,3101234520,Lunes a Domingo 7am-9pm,Precio de lista,10
+Tiendas,Tienda La Alegría,Víveres golosinas y bebidas para toda la familia,Calle 11 # 2-15,Barrio La Alegría,3101234521,Lunes a Sábado 6am-8pm,Precio de lista,10
+Tiendas,Tienda El Pórtico,Abarrotes y productos importados económicos,Carrera 11 # 6-32,Entrada barrio nuevo,3101234522,Lunes a Domingo 7am-9pm,Precio de lista,10
+Tiendas,Tienda La Canasta,Frutas verduras y víveres frescos,Calle 12 # 5-27,Cerca al mercado,3101234523,Lunes a Domingo 5am-8pm,Precio de lista,10
+Tiendas,Tienda Don Hernando,Surtido amplio y crédito para afiliados,Carrera 12 # 4-18,Barrio El Nogal,3101234524,Lunes a Sábado 7am-8pm,Precio de lista,10
+Tiendas,Tienda El Estadero,Víveres licores y mecato para fiestas,Calle 13 # 3-39,Al lado del estadero,3101234525,Lunes a Domingo 8am-11pm,Precio de lista,10
+Tiendas,Tienda La Hormiga,Productos económicos y atención rápida,Carrera 13 # 2-21,Barrio Hormiga,3101234526,Lunes a Domingo 6am-9pm,Precio de lista,10
+Tiendas,Tienda El Nevado,Bebidas frías abarrotes y helados,Calle 14 # 7-14,Parque infantil,3101234527,Lunes a Domingo 7am-10pm,Precio de lista,10
+Tiendas,Tienda La Colina,Víveres frescos y productos del campo,Carrera 14 # 1-46,Alto de la colina,3101234528,Lunes a Sábado 6am-7pm,Precio de lista,10
+Tiendas,Tienda Mi Tierra,Productos típicos locales y víveres,Calle 15 # 4-31,Centro histórico,3101234529,Lunes a Domingo 6am-9pm,Precio de lista,10
+Tiendas,Tienda El Paisaje,Surtido completo y precios justos,Carrera 15 # 6-24,Mirador del pueblo,3101234530,Lunes a Sábado 7am-8pm,Precio de lista,10
+Tiendas,Tienda La Fuente,Abarrotes agua y productos de hidratación,Calle 16 # 3-17,Junto a la fuente,3101234531,Lunes a Domingo 6am-9pm,Precio de lista,10
+Tiendas,Tienda El Cedro,Víveres granos y productos de aseo hogar,Carrera 16 # 5-38,Barrio El Cedro,3101234532,Lunes a Sábado 6am-8pm,Precio de lista,10
+Tiendas,Tienda La Cascada,Surtido variado bebidas y snacks,Calle 17 # 2-29,Via a la cascada,3101234533,Lunes a Domingo 7am-9pm,Precio de lista,10
+Tiendas,Tienda Don Gilberto,Abarrotes al por mayor y productos agro,Carrera 17 # 4-13,Bodega central,3101234534,Lunes a Viernes 6am-6pm,Precio de lista,10
+Tiendas,Tienda El Arrayán,Víveres frescos y productos naturales,Calle 18 # 6-42,Jardín del pueblo,3101234535,Lunes a Sábado 7am-8pm,Precio de lista,10
+Tiendas,Tienda La Orquídea,Productos de primera necesidad y flores,Carrera 18 # 3-25,Barrio Las Flores,3101234536,Lunes a Domingo 6am-9pm,Precio de lista,10
+Tiendas,Tienda El Cafetal,Café local abarrotes y productos de finca,Calle 19 # 5-16,Zona cafetera,3101234537,Lunes a Sábado 6am-7pm,Precio de lista,10
+Tiendas,Tienda La Cosecha Verde,Productos orgánicos y víveres naturales,Carrera 19 # 2-33,Finca la verde,3101234538,Lunes a Viernes 7am-6pm,Precio de lista,10
+Tiendas,Tienda El Guayacán,Surtido clásico con atención familiar,Calle 20 # 4-47,Árbol del guayacán,3101234539,Lunes a Domingo 6am-9pm,Precio de lista,10
+Tiendas,Tienda La Alborada,Víveres y productos para el desayuno,Carrera 20 # 7-19,Barrio La Alborada,3101234540,Lunes a Domingo 5am-8pm,Precio de lista,10
+Tiendas,Tienda El Nogal,Abarrotes frescos y productos del hogar,Calle 21 # 3-28,Bajo el nogal,3101234541,Lunes a Sábado 6am-8pm,Precio de lista,10
+Tiendas,Tienda La Pradera,Víveres al por mayor y menor calidad,Carrera 21 # 5-41,Praderas del pueblo,3101234542,Lunes a Domingo 7am-9pm,Precio de lista,10
+Tiendas,Tienda El Mirador,Surtido completo vista al paisaje,Calle 22 # 2-36,Mirador central,3101234543,Lunes a Domingo 6am-10pm,Precio de lista,10
+Tiendas,Tienda La Ceiba,Productos básicos y atención rápida,Carrera 22 # 4-22,Ceiba centenaria,3101234544,Lunes a Sábado 7am-8pm,Precio de lista,10
+Tiendas,Tienda El Naranjal,Frutas cítricas víveres y jugos naturales,Calle 23 # 6-11,Naranjales del pueblo,3101234545,Lunes a Domingo 6am-8pm,Precio de lista,10
+Tiendas,Tienda La Esperancita,Abarrotes económicos y buena atención,Carrera 23 # 3-34,Barrio Esperanza,3101234546,Lunes a Domingo 6am-9pm,Precio de lista,10
+Tiendas,Tienda Don Misael,Víveres licores y productos de temporada,Calle 24 # 5-48,Esquina sur,3101234547,Lunes a Domingo 7am-11pm,Precio de lista,10
+Tiendas,Tienda El Cafeto,Café tinto abarrotes y productos locales,Carrera 24 # 2-17,Zona café,3101234548,Lunes a Sábado 5am-7pm,Precio de lista,10
+Tiendas,Tienda La Ventana,Surtido variado con servicio a domicilio,Calle 25 # 4-26,Barrio La Ventana,3101234549,Lunes a Domingo 6am-9pm,Precio de lista,10
+Tiendas,Tienda El Portal,Víveres frescos y productos importados,Carrera 25 # 6-39,Portal del pueblo,3101234550,Lunes a Sábado 7am-8pm,Precio de lista,10
+Droguerías,Droguería San José,Medicamentos genéricos y de marca inyectología y tensión,Calle 3 # 4-15,Frente al parque,3112345601,Lunes a Domingo 7am-9pm,Consulta: $5.000,8
+Droguerías,Droguería La Salud,Farmacia completa con servicio de urgencias,Carrera 4 # 3-22,Al lado del banco,3112345602,Lunes a Domingo 7am-10pm,Consulta: $5.000,8
+Droguerías,Droguería El Bienestar,Medicamentos cosméticos y productos naturales,Calle 5 # 2-31,Centro comercial,3112345603,Lunes a Sábado 8am-8pm,Consulta: $5.000,8
+Carnicerías,Carnicería El Sol,Carnes frescas de res cerdo y pollo al corte,Calle 4 # 5-18,Mercado central,3123456701,Lunes a Sábado 5am-1pm,Precio por kilo,12
+Carnicerías,Carnicería Don Jorge,Carne de res fresca y embutidos artesanales,Carrera 3 # 4-27,Junto a la plaza,3123456702,Lunes a Domingo 5am-12pm,Precio por kilo,12
+Carnicerías,Carnicería La Finca,Pollo cerdo y res directamente del productor,Calle 6 # 2-33,Entrada mercado,3123456703,Martes a Domingo 4am-12pm,Precio por kilo,12
+Carnicerías,Carnicería El Corral,Carnes especiales y vísceras frescas,Carrera 5 # 6-14,Barrio El Corral,3123456704,Lunes a Sábado 5am-1pm,Precio por kilo,12
+Talleres Motos,Taller Moto Rápido,Reparación mantenimiento y repuestos para motos,Carrera 6 # 3-25,Via principal,3134567801,Lunes a Sábado 7am-6pm,Revisión: $15.000,8
+Talleres Motos,Taller El Mecánico,Servicio completo de motos todas las marcas,Calle 7 # 4-16,Barrio taller,3134567802,Lunes a Viernes 8am-6pm,Revisión: $15.000,8
+Talleres Motos,Taller Moto Express,Cambio de aceite frenos y electricidad motos,Carrera 7 # 2-38,Zona industrial,3134567803,Lunes a Sábado 7am-5pm,Revisión: $15.000,8
+Talleres Motos,Taller Don Jaime Motos,Reparaciones urgentes y mantenimiento preventivo,Calle 8 # 5-21,Salida norte,3134567804,Lunes a Domingo 7am-7pm,Revisión: $15.000,8
+Talleres Carros,Taller Mecánica Los Andes,Mecánica general y diagnóstico computarizado,Carrera 8 # 4-32,Via principal km1,3145678901,Lunes a Viernes 7am-5pm,Diagnóstico: $30.000,8
+Talleres Carros,Taller El Maestro,Reparación de carros camionetas y busetas,Calle 9 # 3-19,Zona industrial,3145678902,Lunes a Sábado 7am-6pm,Diagnóstico: $30.000,8
+Talleres Carros,Taller Automotriz Central,Cambio de aceite frenos y suspensión,Carrera 9 # 5-43,Entrada pueblo,3145678903,Lunes a Viernes 8am-5pm,Diagnóstico: $30.000,8
+Talleres Carros,Taller Don Roberto,Electricidad y mecánica general carros,Calle 10 # 2-28,Barrio taller,3145678904,Lunes a Sábado 7am-5pm,Diagnóstico: $30.000,8
+Electricistas,Electricista Carlos Meléndez,Instalaciones reparaciones y urgencias eléctricas 24h,Calle 5 # 3-20,Frente al parque,3156789001,Lunes a Sábado 7am-6pm,Visita: $15.000,8
+Electricistas,Electricista Don Fabio,Redes eléctricas residenciales y comerciales,Carrera 10 # 4-15,Barrio central,3156789002,Lunes a Viernes 8am-5pm,Visita: $15.000,8
+Electricistas,Electricista Jhon Castaño,Instalación de contadores y acometidas,Calle 11 # 6-37,Via nueva,3156789003,Lunes a Sábado 7am-6pm,Visita: $15.000,8
+Electricistas,Electricista Miguel Torres,Urgencias eléctricas y mantenimiento industrial,Carrera 11 # 3-22,Zona industrial,3156789004,Lunes a Domingo 7am-8pm,Visita: $15.000,8
+Electricistas,Electricista Luis Ospina,Paneles solares y redes eléctricas certificadas,Calle 12 # 5-14,Barrio nuevo,3156789005,Lunes a Viernes 8am-5pm,Visita: $20.000,8
+Transporte Público,Colectivo Ruta 1 - Centro,Transporte público local y veredal,Parque principal,,3167890101,Lunes a Domingo 5am-8pm,Pasaje: $2.500,5
+Transporte Público,Colectivo Ruta 2 - Veredas,Ruta a veredas y fincas cercanas,Terminal informal,,3167890102,Lunes a Sábado 5am-6pm,Pasaje: $3.500,5
+Transporte Público,Chiva Interveredal,Transporte a veredas lejanas y municipios,Parque central,,3167890103,Lunes a Domingo 4am-6pm,Pasaje: $5.000,5
+Transporte Privado,Taxi Don Ernesto,Servicio de taxi las 24 horas todos los días,Parque principal,,3178901201,Disponible 24h,Carrera local: $5.000,5
+Transporte Privado,Taxi Express Pueblo,Carreras locales y al municipio vecino,Carrera central,,3178901202,Lunes a Domingo 5am-11pm,Carrera local: $5.000,5
+Transporte Privado,Mototaxi Don Álvaro,Mototaxi rápido para el pueblo y veredas,Parque principal,,3178901203,Lunes a Domingo 5am-10pm,Carrera local: $2.000,5
+Transporte Privado,Mototaxi El Rápido,Servicio express y encomiendas locales,Terminal,,3178901204,Lunes a Domingo 5am-10pm,Carrera local: $2.000,5
+Transporte Privado,Fletes Don Carlos,Transporte de carga y trasteos locales,Via principal,,3178901205,Lunes a Sábado 6am-6pm,Flete mínimo: $30.000,5
+Transporte Privado,Transporte Escolar Pueblo,Rutas escolares seguras y puntuales,Colegio principal,,3178901206,Lunes a Viernes 6am-6pm,Mensual: $80.000,5
+Productos Agrícolas,Finca El Paraíso - Café,Café pergamino y tostado directo del productor,Vereda El Paraíso,,3189012301,Lunes a Sábado 6am-5pm,Kg pergamino: $4.500,12
+Productos Agrícolas,Finca La Esperanza - Plátano,Plátano hartón y dominico fresco de finca,Vereda La Esperanza,,3189012302,Martes y Viernes 6am-12pm,Racimo: $8.000,12
+Productos Agrícolas,Finca El Porvenir - Papa,Papa criolla y pastusa directamente del campo,Vereda El Porvenir,,3189012303,Miércoles y Sábado 5am-12pm,Arroba: $25.000,12
+Productos Agrícolas,Finca La Primavera - Yuca,Yuca fresca y almidón artesanal de finca,Vereda La Primavera,,3189012304,Lunes y Jueves 6am-12pm,Arroba: $15.000,12
+Productos Agrícolas,Finca El Roble - Maíz,Maíz amarillo y blanco cosecha propia,Vereda El Roble,,3189012305,Viernes y Sábado 6am-1pm,Arroba: $20.000,12
+Productos Agrícolas,Finca La Montaña - Frijol,Frijol cargamanto y bolón de finca,Vereda La Montaña,,3189012306,Martes y Sábado 6am-12pm,Kilo: $6.000,12
+Productos Agrícolas,Finca El Cedro - Tomate,Tomate chonto y cherry fresco orgánico,Vereda El Cedro,,3189012307,Lunes Miércoles Viernes 6am-1pm,Kilo: $3.500,12
+Productos Agrícolas,Finca La Colina - Cebolla,Cebolla larga y cabezona directa del productor,Vereda La Colina,,3189012308,Martes y Viernes 5am-12pm,Kilo: $2.500,12
+Productos Agrícolas,Finca El Guayabo - Guayaba,Guayaba pera y manzana para consumo y bocadillo,Vereda El Guayabo,,3189012309,Lunes a Sábado 7am-5pm,Kilo: $1.500,12
+Productos Agrícolas,Finca La Naranja - Cítricos,Naranja limón y mandarina de primera,Vereda La Naranja,,3189012310,Miércoles y Sábado 6am-1pm,Docena: $3.000,12
+Productos Agrícolas,Finca El Prado - Aguacate,Aguacate hass y papelillo fresco de árbol,Vereda El Prado,,3189012311,Jueves y Domingo 7am-12pm,Kilo: $4.000,12
+Productos Agrícolas,Finca La Quebrada - Mora,Mora de castilla fresca sin pesticidas,Vereda La Quebrada,,3189012312,Martes Jueves Sábado 6am-12pm,Kilo: $5.000,12
+Productos Agrícolas,Finca El Mango - Frutas,Mango tommy y común maduros del árbol,Vereda El Mango,,3189012313,Lunes a Sábado 7am-5pm,Kilo: $2.000,12
+Productos Agrícolas,Finca La Loma - Lulo,Lulo y curuba fresca para jugos,Vereda La Loma,,3189012314,Miércoles y Sábado 6am-12pm,Kilo: $4.500,12
+Productos Agrícolas,Finca El Naranjo - Granadilla,Granadilla y maracuyá de primera calidad,Vereda El Naranjo,,3189012315,Jueves y Domingo 6am-1pm,Kilo: $5.500,12
+Productos Agrícolas,Finca La Piedra - Arracacha,Arracacha amarilla y blanca directa del campo,Vereda La Piedra,,3189012316,Lunes y Viernes 5am-12pm,Arroba: $18.000,12
+Productos Agrícolas,Finca El Tambo - Habichuela,Habichuela fresca y arveja verde de finca,Vereda El Tambo,,3189012317,Martes y Viernes 6am-1pm,Kilo: $4.000,12
+Productos Agrícolas,Finca La Cañada - Ají,Ají dulce picante y pimentón orgánico,Vereda La Cañada,,3189012318,Miércoles y Sábado 7am-12pm,Kilo: $6.000,12
+Productos Agrícolas,Finca El Capricho - Zanahoria,Zanahoria y remolacha fresca de siembra propia,Vereda El Capricho,,3189012319,Lunes Miércoles Viernes 6am-1pm,Kilo: $2.500,12
+Productos Agrícolas,Finca La Esperanza 2 - Pepino,Pepino cohombro y pepino de rellenar fresco,Vereda Alta,,3189012320,Martes y Viernes 6am-12pm,Kilo: $2.000,12
+Productos Agrícolas,Finca Don Aurelio - Café Especial,Café de origen tostado artesanal y molido,Vereda Cafetera,,3189012321,Lunes a Sábado 7am-5pm,250g tostado: $12.000,12
+Productos Agrícolas,Finca La Floresta - Miel,Miel de abejas pura sin procesar de apiario propio,Vereda La Floresta,,3189012322,Lunes a Viernes 8am-4pm,500ml: $18.000,12
+Productos Agrícolas,Finca El Vergel - Cacao,Cacao fino y de aroma fermentado y seco,Vereda El Vergel,,3189012323,Martes y Sábado 7am-1pm,Kilo seco: $8.000,12
+Productos Agrícolas,Finca La Arboleda - Panela,Panela redonda y cuadrada del trapiche propio,Vereda La Arboleda,,3189012324,Lunes y Jueves 6am-5pm,Kilo: $3.500,12
+Productos Agrícolas,Finca El Sauce - Queso,Queso campesino fresco y cuajada del día,Vereda El Sauce,,3189012325,Lunes a Sábado 5am-10am,Kilo: $14.000,12
+Productos Agrícolas,Finca La Cumbre - Leche,Leche fresca sin pasteurizar directa de la vaca,Vereda La Cumbre,,3189012326,Lunes a Domingo 5am-8am,Litro: $1.800,12
+Productos Agrícolas,Finca El Retiro - Huevos,Huevos criollos de gallina de patio naturales,Vereda El Retiro,,3189012327,Lunes a Domingo 6am-12pm,Cubeta: $14.000,12
+Productos Agrícolas,Finca La Serena - Aguapanela,Panela orgánica y miel de caña artesanal,Vereda La Serena,,3189012328,Martes y Sábado 7am-2pm,Bloque 500g: $4.000,12
+Productos Agrícolas,Finca El Bosque - Hierbas,Hierbas aromáticas medicinales y condimentos,Vereda El Bosque,,3189012329,Lunes Miércoles Viernes 7am-1pm,Manojo: $1.500,12
+Productos Agrícolas,Finca La Pradera - Pimentón,Pimentón rojo verde y amarillo orgánico,Vereda La Pradera,,3189012330,Martes y Viernes 6am-12pm,Kilo: $5.000,12
+Productos Agrícolas,Finca Don Rodrigo - Plátano Maduro,Plátano maduro para freír y cocinar,Vereda Baja,,3189012331,Diario 6am-12pm,Unidad: $500,12
+Productos Agrícolas,Finca La Meseta - Maracuyá,Maracuyá y gulupa frescas para jugo,Vereda La Meseta,,3189012332,Miércoles y Sábado 6am-1pm,Kilo: $4.000,12
+Productos Agrícolas,Finca El Pozo - Cilantro,Cilantro perejil y cebolla larga fresca,Vereda El Pozo,,3189012333,Diario 5am-9am,Manojo: $500,12
+Productos Agrícolas,Finca La Granja - Pepino Agua,Pepino de agua y sandía de verano,Vereda La Granja,,3189012334,Junio a Agosto diario,Unidad: $3.000,12
+Productos Agrícolas,Finca Don Camilo - Berenjena,Berenjena y calabacín frescos de invernadero,Vereda Alta,,3189012335,Martes y Viernes 7am-12pm,Kilo: $4.500,12
+Productos Agrícolas,Finca La Vega - Plátano Ceda,Plátano cedeño para sopas y sancocho,Vereda La Vega,,3189012336,Lunes y Jueves 6am-12pm,Racimo: $12.000,12
+Productos Agrícolas,Finca El Paraíso 2 - Papaya,Papaya hawaiana y maradol madura,Vereda Media,,3189012337,Miércoles y Domingo 7am-12pm,Unidad: $5.000,12
+Productos Agrícolas,Finca La Casita - Espinaca,Espinaca acelga y lechuga orgánica de huerta,Vereda La Casita,,3189012338,Lunes Miércoles Viernes 6am-12pm,Manojo: $2.000,12
+Productos Agrícolas,Finca El Placer - Piña,Piña perolera y golden fresca del campo,Vereda El Placer,,3189012339,Jueves y Domingo 6am-1pm,Unidad: $4.000,12
+Productos Agrícolas,Finca La Rivera - Brócoli,Brócoli y coliflor orgánicos de primera,Vereda La Rivera,,3189012340,Martes y Sábado 6am-12pm,Unidad: $3.500,12
+Productos Agrícolas,Finca Don Eucario - Ahuyama,Ahuyama y zapallo tierno para sopas,Vereda Norte,,3189012341,Lunes y Jueves 5am-12pm,Kilo: $2.000,12
+Productos Agrícolas,Finca El Trigal - Trigo,Trigo y avena orgánica para consumo local,Vereda El Trigal,,3189012342,Sábado 6am-12pm,Kilo: $3.500,12
+Productos Agrícolas,Finca La Quebradita - Pitaya,Pitaya amarilla y roja de cosecha propia,Vereda La Quebradita,,3189012343,Temporada Mayo-Agosto,Unidad: $3.000,12
+Productos Agrícolas,Finca El Manzanal - Manzana,Manzana criolla y pera de árbol fresca,Vereda El Manzanal,,3189012344,Temporada Julio-Octubre,Kilo: $5.000,12
+Productos Agrícolas,Finca La Cascada 2 - Banano,Banano criollo y guineo para consumo,Vereda La Cascada,,3189012345,Lunes a Sábado 6am-5pm,Racimo: $6.000,12
+Productos Agrícolas,Finca Don Ernesto - Cereza,Cereza de café y fruta fresca de temporada,Vereda Cafetera Alta,,3189012346,Octubre a Diciembre,Kilo: $8.000,12
+Productos Agrícolas,Finca El Mirador - Fresas,Fresas frescas sin fungicidas para mesa,Vereda El Mirador,,3189012347,Martes Jueves Sábado 7am-1pm,Kilo: $9.000,12
+Productos Agrícolas,Finca La Palma - Chontaduro,Chontaduro cocinado y fresco de temporada,Vereda La Palma,,3189012348,Enero a Marzo diario,Unidad: $1.000,12
+Productos Agrícolas,Finca El Cedral - Noni,Noni y plantas medicinales para salud,Vereda El Cedral,,3189012349,Lunes a Viernes 8am-4pm,Unidad: $5.000,12
+Productos Agrícolas,Finca La Esperanza 3 - Soya,Soya y maíz para concentrado animal,Vereda La Esperanza,,3189012350,Cosecha Junio y Diciembre,Arroba: $30.000,12
+Productos Agrícolas,Finca Don Libardo - Caña,Caña de azúcar para trapiche y guarapo,Vereda Don Libardo,,3189012351,Temporada seca,Tonelada: $200.000,12
+Productos Agrícolas,Finca El Jardín - Plantas,Plantas ornamentales y medicinales de vivero,Vereda El Jardín,,3189012352,Lunes a Sábado 7am-5pm,Desde $3.000,12
+Productos Agrícolas,Finca La Unión - Arveja,Arveja verde fresca y seca para sopa,Vereda La Unión,,3189012353,Martes y Viernes 6am-12pm,Kilo: $5.500,12
+Productos Agrícolas,Finca El Horizonte - Pepino Gua,Pepino guayabo y cohombro de temporada,Vereda El Horizonte,,3189012354,Miércoles y Sábado 6am-12pm,Kilo: $2.500,12
+Productos Agrícolas,Finca Don Porfirio - Cebada,Cebada orgánica y quinua de siembra propia,Vereda Don Porfirio,,3189012355,Cosecha Agosto,Kilo: $6.000,12
+Productos Agrícolas,Finca La Trocha - Ñame,Ñame y batata fresca para sancocho,Vereda La Trocha,,3189012356,Lunes y Jueves 5am-12pm,Kilo: $3.000,12
+Productos Agrícolas,Finca El Rubí - Rábano,Rábano rojo y blanco fresco de huerta,Vereda El Rubí,,3189012357,Martes y Viernes 6am-12pm,Manojo: $1.500,12
+Productos Agrícolas,Finca La Bella - Pepino Dulce,Pepino dulce y uvilla para consumo fresco,Vereda La Bella,,3189012358,Miércoles y Sábado 7am-12pm,Kilo: $5.000,12
+Productos Agrícolas,Finca El Diamante - Granadilla,Granadilla y cholupa de cosecha propia,Vereda El Diamante,,3189012359,Junio a Septiembre,Kilo: $6.000,12
+Productos Agrícolas,Finca La Gloria - Uchuva,Uchuva fresca con capuchón para exportar,Vereda La Gloria,,3189012360,Martes Jueves Sábado 6am-1pm,Kilo: $7.000,12
+Productos Agrícolas,Finca El Encanto - Bore,Bore y papa china para cocina típica,Vereda El Encanto,,3189012361,Lunes y Viernes 5am-12pm,Kilo: $2.500,12
+Productos Agrícolas,Finca La Ilusión - Apio,Apio y puerro frescos de huerta orgánica,Vereda La Ilusión,,3189012362,Miércoles y Sábado 6am-12pm,Manojo: $2.500,12
+Productos Agrícolas,Finca El Triunfo - Sagú,Sagú y fécula de maíz artesanal,Vereda El Triunfo,,3189012363,Sábado 6am-12pm,Kilo: $5.000,12
+Productos Agrícolas,Finca Don Helí - Maíz Peto,Maíz peto tierno para envueltos y mazamorra,Vereda Don Helí,,3189012364,Lunes a Viernes 6am-12pm,Mazorca: $1.000,12
+Productos Agrícolas,Finca La Fortuna - Cacao Nibs,Nibs de cacao y chocolate artesanal en barra,Vereda La Fortuna,,3189012365,Martes y Viernes 8am-4pm,Barra 50g: $8.000,12
+Productos Agrícolas,Finca El Retorno - Achiote,Achiote y condimentos naturales del campo,Vereda El Retorno,,3189012366,Sábado 7am-1pm,Kilo: $8.000,12
+Productos Agrícolas,Finca La Constancia - Cilantro Cil,Cilantro cimarrón y hierba buena frescas,Vereda La Constancia,,3189012367,Diario 5am-9am,Manojo: $500,12
+Productos Agrícolas,Finca El Tesoro - Jengibre,Jengibre y cúrcuma fresca para salud,Vereda El Tesoro,,3189012368,Miércoles y Sábado 7am-12pm,Kilo: $10.000,12
+Productos Agrícolas,Finca La Quebrada 2 - Tomate de Árbol,Tomate de árbol rojo y amarillo fresco,Vereda La Quebrada,,3189012369,Martes y Viernes 6am-1pm,Kilo: $4.000,12
+Productos Agrícolas,Finca Don Abel - Pepino Biche,Pepino biche y maíz tierno cosecha propia,Vereda Don Abel,,3189012370,Lunes y Jueves 5am-12pm,Unidad: $1.500,12
+Productos Agrícolas,Finca El Progreso - Coles,Col repollo y berza fresca sin químicos,Vereda El Progreso,,3189012371,Martes y Sábado 6am-12pm,Kilo: $2.000,12
+Productos Agrícolas,Finca La Alegría - Cebolla Puerro,Cebolla puerro y ajo fresco del campo,Vereda La Alegría,,3189012372,Lunes Miércoles Viernes 5am-12pm,Kilo: $4.000,12
+Productos Agrícolas,Finca El Amanecer - Habas,Habas frescas y secas para sopas,Vereda El Amanecer,,3189012373,Miércoles y Sábado 6am-12pm,Kilo: $5.500,12
+Productos Agrícolas,Finca La Esperanza 4 - Maní,Maní y nueces artesanales tostadas,Vereda Alta,,3189012374,Sábado 7am-1pm,Kilo: $9.000,12
+Productos Agrícolas,Finca Don Misael - Café Verde,Café verde sin tostar para exportación,Vereda Misael,,3189012375,Cosecha Oct-Dic,Kilo: $6.000,12
+Productos Agrícolas,Finca El Triunfo 2 - Pepas,Pepas de aguacate y semillas para siembra,Vereda El Triunfo,,3189012376,Lunes a Viernes 7am-4pm,Unidad: $500,12
+Productos Agrícolas,Finca La Ilusión 2 - Aloe,Sábila y plantas medicinales del campo,Vereda La Ilusión,,3189012377,Martes y Viernes 7am-3pm,Penca: $3.000,12
+Productos Agrícolas,Finca El Milagro - Chontaduro 2,Chontaduro con sal y limón listo para comer,Vereda El Milagro,,3189012378,Enero a Abril diario,Unidad: $1.500,12
+Productos Agrícolas,Finca La Bendita - Nabo,Nabo y colinabo fresco para cocina,Vereda La Bendita,,3189012379,Martes y Sábado 6am-12pm,Manojo: $2.000,12
+Productos Agrícolas,Finca El Cristal - Espárragos,Espárragos y alcachofas frescas de temporada,Vereda El Cristal,,3189012380,Cosecha Febrero-Abril,Kilo: $12.000,12
+Productos Agrícolas,Finca La Promesa - Quinua,Quinua blanca y roja orgánica certificada,Vereda La Promesa,,3189012381,Cosecha Julio,Kilo: $12.000,12
+Productos Agrícolas,Finca Don Tulio - Camarón Río,Camarón de río fresco de temporada,Vereda Río,,3189012382,Temporada verano,Kilo: $25.000,12
+Productos Agrícolas,Finca El Naranjal 2 - Naranja Navel,Naranja navel y tangelo para exportar,Vereda El Naranjal,,3189012383,Junio a Agosto,Caja 20kg: $25.000,12
+Productos Agrícolas,Finca La Roca - Trucha,Trucha arco iris de estanque propio,Vereda La Roca,,3189012384,Viernes y Sábado 6am-12pm,Kilo: $18.000,12
+Productos Agrícolas,Finca El Porvenir 2 - Tilapia,Tilapia fresca y bocachico de piscicultura,Vereda El Porvenir,,3189012385,Sábado y Domingo 6am-12pm,Kilo: $12.000,12
+Productos Agrícolas,Finca Don Gonzalo - Gallinas,Gallinas ponedoras y pollos de engorde,Vereda Don Gonzalo,,3189012386,Lunes a Sábado 7am-5pm,Pollo entero: $22.000,12
+Productos Agrícolas,Finca La Tranquilidad - Conejos,Conejos vivos y en canal para consumo,Vereda La Tranquilidad,,3189012387,Martes y Sábado 7am-12pm,Kilo canal: $18.000,12
+Productos Agrícolas,Finca El Paraíso 3 - Cerdos,Carne de cerdo fresca y chorizos artesanales,Vereda El Paraíso,,3189012388,Viernes y Sábado 5am-12pm,Kilo: $14.000,12
+Productos Agrícolas,Finca La Montaña 2 - Res,Ganado bovino y leche de doble propósito,Vereda La Montaña,,3189012389,Lunes a Viernes 5am-8am,Litro leche: $2.000,12
+Productos Agrícolas,Finca El Campo - Abonos,Abono orgánico compost y lombricompost,Vereda El Campo,,3189012390,Lunes a Viernes 7am-5pm,Bulto 50kg: $25.000,12
+Productos Agrícolas,Finca La Verde - Semillas,Semillas criollas de maíz frijol y papa,Vereda La Verde,,3189012391,Sábado 7am-1pm,Sobre 50g: $3.000,12
+Productos Agrícolas,Finca Don Héctor - Aceite,Aceite de aguacate y coco artesanal,Vereda Don Héctor,,3189012392,Martes y Viernes 8am-4pm,250ml: $15.000,12
+Productos Agrícolas,Finca El Vergel 2 - Mermeladas,Mermeladas artesanales de frutas del campo,Vereda El Vergel,,3189012393,Sábado 7am-2pm,Frasco 250g: $8.000,12
+Productos Agrícolas,Finca La Dulzura - Bocadillo,Bocadillo de guayaba artesanal empacado,Vereda La Dulzura,,3189012394,Lunes a Viernes 7am-5pm,Caja 500g: $6.000,12
+Productos Agrícolas,Finca El Sabor - Natillas,Natillas y arequipe artesanal de leche,Vereda El Sabor,,3189012395,Martes y Sábado 7am-2pm,Frasco 300g: $9.000,12
+Productos Agrícolas,Finca La Colmena - Propóleo,Propóleo y cera de abejas para salud,Vereda La Colmena,,3189012396,Lunes a Viernes 8am-4pm,15ml: $20.000,12
+Productos Agrícolas,Finca Don Julio - Polen,Polen de abejas natural y liofilizado,Vereda Don Julio,,3189012397,Lunes a Viernes 8am-4pm,100g: $15.000,12
+Productos Agrícolas,Finca El Encanto 2 - Vinagre,Vinagre de miel y de frutas artesanal,Vereda El Encanto,,3189012398,Miércoles y Sábado 8am-2pm,500ml: $10.000,12
+Productos Agrícolas,Finca La Tierra - Aromáticas,Aromáticas en bolsitas para infusión,Vereda La Tierra,,3189012399,Lunes a Viernes 7am-4pm,Caja 20 bolsitas: $5.000,12
+Productos Agrícolas,Finca El Cielo - Café Liofilizado,Café soluble artesanal del campo liofilizado,Vereda El Cielo,,3189012400,Lunes a Viernes 8am-4pm,Frasco 100g: $18.000,12
